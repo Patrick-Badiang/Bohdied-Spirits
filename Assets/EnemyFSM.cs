@@ -10,10 +10,9 @@ public class EnemyFSM : MonoBehaviour
 
     EnemyState enemyState;
     EnemyLevel enemyLevel;
+    public Sight sight;
 
-    [Header("Stats")]
-    public float speed;
-    public float health;
+    public float attackDistance;
     
 
 
@@ -21,34 +20,71 @@ public class EnemyFSM : MonoBehaviour
     NavMeshAgent agent;
 
     void Awake(){
-        agent = GetComponent<NavMeshAgent>();
+        agent = GetComponentInParent<NavMeshAgent>();
     
     }
 
     void Update(){
         if(enemyState == EnemyState.wandering){
-
+            Wandering();
         }
         if(enemyState == EnemyState.chasing){
-
+            Chasing();
         }
         if(enemyState == EnemyState.attacking){
-
+            Attacking();
         }
         if(enemyState == EnemyState.idle){
-
+            Idle();
         }
 
     }
 
     void Wandering(){
         agent.isStopped = false;
-
+        if(sight.detectedObject != null){
+            enemyState = EnemyState.chasing;
+        }
     }
-    void Chasing(){}
-    void Attacking(){}
+    void Chasing(){
+        agent.isStopped = false;
+        
+        if(sight.detectedObject == null){
+            enemyState = EnemyState.wandering;
+            return;
+        }
+
+        agent.SetDestination(sight.detectedObject.transform.position);
+
+        float distanceToPlayer = Vector3.Distance(transform.position, sight.detectedObject.transform.position);
+        if(distanceToPlayer <= attackDistance){
+            enemyState = EnemyState.attacking;
+        }
+    }
+
+    void Attacking(){
+        agent.isStopped = true;
+
+        //Make this trigger an event and have another script listen the "OnAttack" event.
+        Debug.Log("Attacking");
+        if(sight.detectedObject == null){
+            enemyState = EnemyState.wandering;
+            return;
+        }
+
+        float distanceToPlayer = Vector3.Distance(transform.position, sight.detectedObject.transform.position);
+        if(distanceToPlayer > attackDistance * 1.1f){
+            enemyState = EnemyState.chasing;
+        }
+    }
     void Idle(){}
 
+    void OnDrawGizmos(){
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, attackDistance);
 
+        // Gizmos.color = Color.yellow;
+        // Gizmos.DrawWireSphere(transform.position, baseAttackDistance);
+    }
 
 }
