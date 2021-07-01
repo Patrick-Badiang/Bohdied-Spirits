@@ -9,19 +9,19 @@ public class EnemyFSM : MonoBehaviour
     public enum EnemyLevel{midSpirit, ElementalSpirit, Boss}
 
     EnemyState enemyState;
-    EnemyLevel enemyLevel;
+    public EnemyLevel enemyLevel;
     public Sight sight;
 
     public float attackDistance;
     
 
 
-
+    Combat combat;
     NavMeshAgent agent;
 
     void Awake(){
         agent = GetComponentInParent<NavMeshAgent>();
-    
+        combat = GetComponentInParent<Combat>();
     }
 
     void Update(){
@@ -65,8 +65,8 @@ public class EnemyFSM : MonoBehaviour
     void Attacking(){
         agent.isStopped = true;
 
-        //Make this trigger an event and have another script listen the "OnAttack" event.
-        Debug.Log("Attacking");
+        combat.DoDamage(sight.detectedObject);
+
         if(sight.detectedObject == null){
             enemyState = EnemyState.wandering;
             return;

@@ -4,6 +4,9 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
 {
+    [Header("Inputs")]
+    [SerializeField]
+    private InputActionReference attackControl;
     [SerializeField]
     private InputActionReference movementControl;
     [SerializeField]
@@ -19,27 +22,35 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float rotationSpeed = 4f;
 
+    
+
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
     private Transform cameraMainTransform;
     private float jumpCount;
+    
+    Combat combat;
 
     private void OnEnable(){
         movementControl.action.Enable();
         jumpControl.action.Enable();
+        attackControl.action.Enable();
     }
 
     private void OnDisable(){
         movementControl.action.Disable();
         jumpControl.action.Disable();
+        attackControl.action.Disable();
 
     }
+
     private void Start()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;        
-        controller = gameObject.GetComponent<CharacterController>();
+        controller = GetComponent<CharacterController>();
+        combat = GetComponent<Combat>();
         cameraMainTransform = Camera.main.transform;
     }
 
@@ -61,7 +72,10 @@ public class PlayerController : MonoBehaviour
         
         controller.Move(move * Time.deltaTime * playerSpeed);
 
-        
+        //Attacks
+        if(attackControl.action.triggered){
+            
+        }
 
         // Jumps
         if (jumpControl.action.triggered)
