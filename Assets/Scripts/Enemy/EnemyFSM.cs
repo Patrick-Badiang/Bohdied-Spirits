@@ -15,7 +15,8 @@ public class EnemyFSM : MonoBehaviour
     public float attackDistance;
     
 
-
+    float lastAttackTime;
+    public float attackSpeed;
     Combat combat;
     NavMeshAgent agent;
 
@@ -63,10 +64,6 @@ public class EnemyFSM : MonoBehaviour
     }
 
     void Attacking(){
-        agent.isStopped = true;
-
-        combat.DoDamage(sight.detectedObject);
-
         if(sight.detectedObject == null){
             enemyState = EnemyState.wandering;
             return;
@@ -76,6 +73,15 @@ public class EnemyFSM : MonoBehaviour
         if(distanceToPlayer > attackDistance * 1.1f){
             enemyState = EnemyState.chasing;
         }
+
+        agent.isStopped = true;
+
+        
+        combat.DoDamage(sight.detectedObject);
+        
+        
+
+        
     }
     void Idle(){}
 
