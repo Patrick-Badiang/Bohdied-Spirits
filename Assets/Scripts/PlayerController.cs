@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
 
         //Attacks
         if(attackControl.action.triggered){
-            
+            //Melee Sword only because the bow is only a right click mouse
         }
 
         // Jumps
