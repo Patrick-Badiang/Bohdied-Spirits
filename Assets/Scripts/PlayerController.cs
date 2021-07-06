@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float playerSpeed = 5.0f;
 
+    
+    
+
     [Header("Jump Mechanic")]
     public float jumpHeight;
     public float doubleJumpHeight;
@@ -31,6 +34,7 @@ public class PlayerController : MonoBehaviour
     private float jumpCount;
     
     Combat combat;
+    Animator animator;
 
     private void OnEnable(){
         movementControl.action.Enable();
@@ -51,6 +55,7 @@ public class PlayerController : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;        
         controller = GetComponent<CharacterController>();
         combat = GetComponent<Combat>();
+        animator = GetComponent<Animator>();
         cameraMainTransform = Camera.main.transform;
     }
 
@@ -71,6 +76,11 @@ public class PlayerController : MonoBehaviour
         move.y = 0f;
         
         controller.Move(move * Time.deltaTime * playerSpeed);
+        if((movement.x != 0f) || (movement.y != 0f)){
+            animator.SetBool("Move", true);
+        }else{
+            animator.SetBool("Move", false);
+        }
 
         //Attacks
         if(attackControl.action.triggered){
