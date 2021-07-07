@@ -1,7 +1,10 @@
 using UnityEngine;
+using System.Collections;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(CharacterController))]
+[RequireComponent(typeof(CapsuleCollider))]
+[RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
     [Header("Inputs")]
@@ -14,7 +17,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float playerSpeed = 5.0f;
 
-    
+    [Header("Animation Duration")]
+    public float attackAnimation;
     
 
     [Header("Jump Mechanic")]
@@ -84,7 +88,7 @@ public class PlayerController : MonoBehaviour
 
         //Attacks
         if(attackControl.action.triggered){
-            //Melee Sword only because the bow is only a right click mouse
+            StartCoroutine(AttackAnim());
         }
 
         // Jumps
@@ -108,5 +112,17 @@ public class PlayerController : MonoBehaviour
             Quaternion rotation = Quaternion.Euler(0f, targetAngle, 0f); //We only want to rotate on the y axis
             transform.rotation = Quaternion.Lerp(transform.rotation,rotation,Time.deltaTime * rotationSpeed);
         }
+        
+        
     }
+
+    IEnumerator AttackAnim(){
+          animator.SetBool("Attack", true);
+
+          yield return new WaitForSeconds(attackAnimation);
+
+          animator.SetBool("Attack", false);  
+    }
+
+    
 }
