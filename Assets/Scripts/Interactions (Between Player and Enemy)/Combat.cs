@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class Combat : MonoBehaviour
 {
-    public bool isPlayer;
     [Header("Stats")]
     public float health;
-    public float damage;
-    public float attackSpeed;
+    public Stat damage;
+    public Stat armor;
+    public int attackSpeed;
+
 
     [Header("Animations")]
     public float deathDelay;
     //public float attackDuration;
 
     [Header("Elements")]
+    public float vulnerableDamage;
     public ElementType elementType;
     public ElementType[] vulnerableElementType;
 
@@ -33,7 +35,7 @@ public class Combat : MonoBehaviour
                 return;
             
             lastAttackTime = Time.time;
-            healthScript.TakeDamage(damage, elementType);
+            healthScript.TakeDamage(damage.GetValue(), elementType);
             }
         }
     }
@@ -44,8 +46,11 @@ public class Combat : MonoBehaviour
         //yield return new WaitForSeconds(attackDuration);
     //}
 
-    public void TakeDamage(float passed_Damage, ElementType passed_elementType){
-        CheckElement();
+    public void TakeDamage(int damage, ElementType passed_elementType){
+        CheckElement(passed_elementType);
+
+        damage -= armor.GetValue();
+        damage = Mathf.Clamp(damage, 0, int.MaxValue); //Makes sure that the damage never reaches below zero
 
         if(vulnerable){ damage *= 2;}
 
@@ -57,9 +62,9 @@ public class Combat : MonoBehaviour
         }
     }
 
-    void CheckElement(){
+    void CheckElement(ElementType passed_elementType){
         for(int i = 0; i < vulnerableElementType.Length; i++){
-            if(vulnerableElementType[i] == elementType){
+            if(vulnerableElementType[i] == passed_elementType){
                 vulnerable = true;
             }
             vulnerable = false;      
@@ -68,8 +73,7 @@ public class Combat : MonoBehaviour
 
     void Die(){
 
-        if(!isPlayer){gameObject.SetActive(false);}
-        if(isPlayer & Time.timeScale > 0){Debug.Log("Dead"); Time.timeScale = 0;}
+       gameObject.SetActive(false);
         
     }
 }
