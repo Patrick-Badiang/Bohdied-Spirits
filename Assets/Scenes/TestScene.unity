@@ -532,7 +532,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 397912573}
-  m_LocalRotation: {x: -0.24173154, y: -0.00009683791, z: 0.000009558887, w: 0.97034323}
+  m_LocalRotation: {x: -0.24173154, y: -0.00009680366, z: 0.000009555506, w: 0.97034323}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -966,7 +966,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1015116347}
-  m_LocalRotation: {x: -0.2660845, y: -0.00009703502, z: 0.0000071168997, w: 0.96394974}
+  m_LocalRotation: {x: -0.2660845, y: -0.00009702644, z: 0.0000071162694, w: 0.96394974}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1200,11 +1200,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e454d757e0e4fee4faa490f918752f23, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 0
   health: 0
-  damage: 0
+  damage:
+    baseValue: 0
+  armor:
+    baseValue: 0
   attackSpeed: 0
   deathDelay: 0
+  vulnerableDamage: 0
   elementType: {fileID: 0}
   vulnerableElementType:
   - {fileID: 11400000, guid: d296a74c6ec715049961283f5d628f3b, type: 2}
@@ -1413,7 +1416,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1632539189}
-  m_LocalRotation: {x: -0.07281475, y: -0.000097050885, z: -0.000007085544, w: 0.9973455}
+  m_LocalRotation: {x: -0.07281475, y: -0.00009698224, z: -0.0000070805327, w: 0.9973455}
   m_LocalPosition: {x: 490.00156, y: 2.3999999, z: 503.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -1960,7 +1963,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 5114429692975691863, guid: cb8abd44efaba434a9a84ace12152866, type: 3}
+  m_Mesh: {fileID: 5114429692975691863, guid: 917265710cafe0742960ce681576873d, type: 3}
   m_Bones:
   - {fileID: 2735357135769435543}
   - {fileID: 6443798821569223823}
@@ -2484,6 +2487,7 @@ MonoBehaviour:
   movementControl: {fileID: 4051612399544564346, guid: 4de724c32cee4cb4e950fbb7ae348b06, type: 3}
   jumpControl: {fileID: -8182031442798803961, guid: 4de724c32cee4cb4e950fbb7ae348b06, type: 3}
   playerSpeed: 8
+  attackAnimation: 0
   jumpHeight: 1
   doubleJumpHeight: 1
   gravityValue: -20
@@ -2515,7 +2519,7 @@ Animator:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8548157134472695065}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: cb8abd44efaba434a9a84ace12152866, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 94e546e730e4ede4a9fc01c70607fed1, type: 2}
   m_Controller: {fileID: 9100000, guid: 430a052f54f971e4ab7b9f8ff14bb0a5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
