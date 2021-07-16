@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/Actions.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/Imports/Input/Actions.inputactions'
 
 using System;
 using System.Collections;
@@ -86,6 +86,22 @@ public class @Actions : IInputActionCollection, IDisposable
                     ""name"": ""Aim"",
                     ""type"": ""Button"",
                     ""id"": ""b16596fd-ba85-4d0d-af95-752632c1dbf3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)""
+                },
+                {
+                    ""name"": ""Save"",
+                    ""type"": ""Button"",
+                    ""id"": ""7c589461-428f-462b-bb7d-d93229b3e646"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=2)""
+                },
+                {
+                    ""name"": ""Load"",
+                    ""type"": ""Button"",
+                    ""id"": ""6c2fd1ce-c2b7-474d-a999-bbc274c4b174"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=2)""
@@ -234,6 +250,28 @@ public class @Actions : IInputActionCollection, IDisposable
                     ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""283a790f-eda6-4425-9c46-68c2cb337c78"",
+                    ""path"": ""<Keyboard>/o"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Save"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2d1ab9e7-00dd-4be2-ad13-c96088543717"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Load"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -251,6 +289,8 @@ public class @Actions : IInputActionCollection, IDisposable
         m_Player_Ability3 = m_Player.FindAction("Ability-3", throwIfNotFound: true);
         m_Player_Ability4 = m_Player.FindAction("Ability-4", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
+        m_Player_Save = m_Player.FindAction("Save", throwIfNotFound: true);
+        m_Player_Load = m_Player.FindAction("Load", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -309,6 +349,8 @@ public class @Actions : IInputActionCollection, IDisposable
     private readonly InputAction m_Player_Ability3;
     private readonly InputAction m_Player_Ability4;
     private readonly InputAction m_Player_Aim;
+    private readonly InputAction m_Player_Save;
+    private readonly InputAction m_Player_Load;
     public struct PlayerActions
     {
         private @Actions m_Wrapper;
@@ -322,6 +364,8 @@ public class @Actions : IInputActionCollection, IDisposable
         public InputAction @Ability3 => m_Wrapper.m_Player_Ability3;
         public InputAction @Ability4 => m_Wrapper.m_Player_Ability4;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
+        public InputAction @Save => m_Wrapper.m_Player_Save;
+        public InputAction @Load => m_Wrapper.m_Player_Load;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -358,6 +402,12 @@ public class @Actions : IInputActionCollection, IDisposable
                 @Aim.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
                 @Aim.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
                 @Aim.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAim;
+                @Save.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSave;
+                @Save.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSave;
+                @Save.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSave;
+                @Load.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLoad;
+                @Load.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLoad;
+                @Load.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnLoad;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -389,6 +439,12 @@ public class @Actions : IInputActionCollection, IDisposable
                 @Aim.started += instance.OnAim;
                 @Aim.performed += instance.OnAim;
                 @Aim.canceled += instance.OnAim;
+                @Save.started += instance.OnSave;
+                @Save.performed += instance.OnSave;
+                @Save.canceled += instance.OnSave;
+                @Load.started += instance.OnLoad;
+                @Load.performed += instance.OnLoad;
+                @Load.canceled += instance.OnLoad;
             }
         }
     }
@@ -404,5 +460,7 @@ public class @Actions : IInputActionCollection, IDisposable
         void OnAbility3(InputAction.CallbackContext context);
         void OnAbility4(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
+        void OnSave(InputAction.CallbackContext context);
+        void OnLoad(InputAction.CallbackContext context);
     }
 }

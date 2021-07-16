@@ -6,8 +6,8 @@ public class Combat : MonoBehaviour
 {
     [Header("Stats")]
     public float health;
-    public Stat damage;
-    public Stat armor;
+    public int damage;
+    public int armor;
     public int attackSpeed;
 
 
@@ -35,7 +35,7 @@ public class Combat : MonoBehaviour
                 return;
             
             lastAttackTime = Time.time;
-            healthScript.TakeDamage(damage.GetValue(), elementType);
+            healthScript.TakeDamage(damage, elementType);
             }
         }
     }
@@ -49,7 +49,7 @@ public class Combat : MonoBehaviour
     public void TakeDamage(int damage, ElementType passed_elementType){
         CheckElement(passed_elementType);
 
-        damage -= armor.GetValue();
+        damage -= armor;
         damage = Mathf.Clamp(damage, 0, int.MaxValue); //Makes sure that the damage never reaches below zero
 
         if(vulnerable){ damage *= 2;}

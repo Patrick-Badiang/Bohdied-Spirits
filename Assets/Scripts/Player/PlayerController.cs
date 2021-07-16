@@ -7,6 +7,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour
 {
+    public InventoryObject inventory;
+
     [Header("Inputs")]
     [SerializeField]
     private InputActionReference attackControl;
@@ -14,6 +16,11 @@ public class PlayerController : MonoBehaviour
     private InputActionReference movementControl;
     [SerializeField]
     private InputActionReference jumpControl;
+    [SerializeField]
+    private InputActionReference saveControl;
+    [SerializeField]
+    private InputActionReference loadControl;
+    
     [SerializeField]
     private float playerSpeed = 5.0f;
 
@@ -44,13 +51,16 @@ public class PlayerController : MonoBehaviour
         movementControl.action.Enable();
         jumpControl.action.Enable();
         attackControl.action.Enable();
+        saveControl.action.Enable();
+        loadControl.action.Enable();
     }
 
     private void OnDisable(){
         movementControl.action.Disable();
         jumpControl.action.Disable();
         attackControl.action.Disable();
-
+        saveControl.action.Disable();
+        loadControl.action.Disable();
     }
 
     private void Start()
@@ -63,6 +73,13 @@ public class PlayerController : MonoBehaviour
         cameraMainTransform = Camera.main.transform;
     }
 
+    public void OnTriggerEnter(Collider other){
+        var item = other.GetComponent<GroundItem>();
+        if(item){
+            inventory.AddItem(new Item(item.item), 1);
+            Destroy(other.gameObject);
+        }
+    }
     void Update()
     {
         groundedPlayer = controller.isGrounded;
@@ -86,13 +103,19 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Move", false);
         }
 
-        //Attacks
-        if(attackControl.action.triggered){
-            StartCoroutine(AttackAnim());
-        }
+        //State Conditions
+        bool attacking = attackControl.action.triggered;
+        bool jumping = jumpControl.action.triggered;
+        bool save = saveControl.action.triggered;
+        bool load = loadControl.action.triggered;
+        
+        //State actions
+        if(attacking){ StartCoroutine(AttackAnim()); }
+        if(save){ inventory.Save();}
+        if(load){ inventory.Load();}
 
         // Jumps
-        if (jumpControl.action.triggered)
+        if (jumping)
         {
             if(jumpCount == 0){
                 playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
@@ -122,6 +145,10 @@ public class PlayerController : MonoBehaviour
           yield return new WaitForSeconds(attackAnimation);
 
           animator.SetBool("Attack", false);  
+    }
+
+    private void OnApplicationQuit(){
+        inventory.Container.Items.Clear();
     }
 
     

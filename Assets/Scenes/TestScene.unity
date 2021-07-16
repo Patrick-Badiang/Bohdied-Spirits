@@ -532,7 +532,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 397912573}
-  m_LocalRotation: {x: -0.24173154, y: -0.00009680366, z: 0.000009555506, w: 0.97034323}
+  m_LocalRotation: {x: -0.24173154, y: -0.00009684062, z: 0.000009559154, w: 0.97034323}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -966,7 +966,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1015116347}
-  m_LocalRotation: {x: -0.2660845, y: -0.00009702644, z: 0.0000071162694, w: 0.96394974}
+  m_LocalRotation: {x: -0.2660845, y: -0.000097026015, z: 0.0000071162376, w: 0.96394974}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1201,10 +1201,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 0
-  damage:
-    baseValue: 0
-  armor:
-    baseValue: 0
+  damage: 0
+  armor: 0
   attackSpeed: 0
   deathDelay: 0
   vulnerableDamage: 0
@@ -1416,7 +1414,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1632539189}
-  m_LocalRotation: {x: -0.07281475, y: -0.00009698224, z: -0.0000070805327, w: 0.9973455}
+  m_LocalRotation: {x: -0.07281475, y: -0.00009705232, z: -0.0000070856486, w: 0.9973455}
   m_LocalPosition: {x: 490.00156, y: 2.3999999, z: 503.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

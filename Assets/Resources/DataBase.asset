@@ -9,11 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3514b200280a5694090bb981dc4e9f99, type: 3}
-  m_Name: Sword
+  m_Script: {fileID: 11500000, guid: 1865c66453a68f64794b692d8362f536, type: 3}
+  m_Name: DataBase
   m_EditorClassIdentifier: 
-  Id: 0
-  uiDisplay: {fileID: 0}
-  type: 1
-  description: 
-  buffs: []
+  Items: []

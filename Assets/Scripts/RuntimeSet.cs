@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class RuntimeSet<T> : ScriptableObject
 {
+    [SerializeField]
     private List<T> items = new List<T>(); //Not going to be accessed through inspector
 
     public void Initialize(){
