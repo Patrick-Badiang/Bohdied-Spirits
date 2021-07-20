@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class DisplayInventory : MonoBehaviour
+public class UserInterface : MonoBehaviour
 {
 
     public MouseItem mouseItem = new MouseItem();
@@ -157,4 +157,10 @@ public class DisplayInventory : MonoBehaviour
     }
 }
 
+public class MouseItem{
+    public GameObject obj;
+    public InventorySlot item;
+    public InventorySlot hoverItem;
+    public GameObject hoverObj;
+}
 

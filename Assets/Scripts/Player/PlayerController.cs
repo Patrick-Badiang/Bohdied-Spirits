@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
 {
     public InventoryObject inventory;
 
+    
+
     [Header("Inputs")]
     [SerializeField]
     private InputActionReference attackControl;
@@ -20,9 +22,18 @@ public class PlayerController : MonoBehaviour
     private InputActionReference saveControl;
     [SerializeField]
     private InputActionReference loadControl;
+    [SerializeField]
+    private InputActionReference inventoryControl;
     
     [SerializeField]
     private float playerSpeed = 5.0f;
+
+    [Header("Events")]
+    [SerializeField]
+    private VoidEvent inventoryStatus;
+    [SerializeField]
+    private VoidEvent playerStatus;
+
 
     [Header("Animation Duration")]
     public float attackAnimation;
@@ -41,8 +52,11 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
+    
     private Transform cameraMainTransform;
     private float jumpCount;
+
+    bool changed;
     
     Combat combat;
     Animator animator;
@@ -50,23 +64,24 @@ public class PlayerController : MonoBehaviour
     private void OnEnable(){
         movementControl.action.Enable();
         jumpControl.action.Enable();
-        attackControl.action.Enable();
+        // attackControl.action.Enable();
         saveControl.action.Enable();
         loadControl.action.Enable();
+        inventoryControl.action.Enable();
     }
 
     private void OnDisable(){
         movementControl.action.Disable();
         jumpControl.action.Disable();
-        attackControl.action.Disable();
+        // attackControl.action.Disable();
         saveControl.action.Disable();
         loadControl.action.Disable();
+        inventoryControl.action.Disable();
     }
 
-    private void Start()
+    private void Awake()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;        
+        playerStatus.Raise();
         controller = GetComponent<CharacterController>();
         combat = GetComponent<Combat>();
         animator = GetComponent<Animator>();
@@ -108,11 +123,13 @@ public class PlayerController : MonoBehaviour
         bool jumping = jumpControl.action.triggered;
         bool save = saveControl.action.triggered;
         bool load = loadControl.action.triggered;
+        bool inventoryLoad = inventoryControl.action.triggered;
         
         //State actions
-        if(attacking){ StartCoroutine(AttackAnim()); }
-        if(save){ inventory.Save();}
+        // if(attacking){StartCoroutine(AttackAnim()); }
+        if(save){Debug.Log("Save"); inventory.Save();}
         if(load){ inventory.Load();}
+        if(inventoryLoad) {inventoryStatus.Raise(); playerStatus.Raise();}
 
         // Jumps
         if (jumping)
@@ -148,8 +165,13 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnApplicationQuit(){
-        inventory.Container.Items.Clear();
+        inventory.Container.Items = new InventorySlot[24];
     }
 
+    public void DisablePlayerScript(){
+        gameObject.SetActive(!gameObject.activeSelf);
+        changed = !changed;
+   
+    }
     
 }

@@ -9,15 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3514b200280a5694090bb981dc4e9f99, type: 3}
-  m_Name: Sword
+  m_Script: {fileID: 11500000, guid: 4166e70b92cf84d41b079fec57c7f58a, type: 3}
+  m_Name: OnStatusChange
   m_EditorClassIdentifier: 
-  Id: 0
-  uiDisplay: {fileID: 10915, guid: 0000000000000000f000000000000000, type: 0}
-  type: 1
-  description: blah blah
-  buffs:
-  - attribute: 1
-    value: 0
-    min: 10
-    max: 20
