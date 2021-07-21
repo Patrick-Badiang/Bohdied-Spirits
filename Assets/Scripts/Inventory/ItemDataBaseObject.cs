@@ -13,12 +13,14 @@ public class ItemDataBaseObject : ScriptableObject, ISerializationCallbackReceiv
     public void OnAfterDeserialize(){
         for (int i = 0; i < Items.Length; i++)
         {
-            Items[i].Id = i;
+            Items[i].data.Id = i;
 
             GetItem.Add(i, Items[i]);
         }
     }
 
-    public void OnBeforeSerialize(){}
+    public void OnBeforeSerialize(){
+        GetItem = new Dictionary<int, ItemObject>();
+    }
 
 }

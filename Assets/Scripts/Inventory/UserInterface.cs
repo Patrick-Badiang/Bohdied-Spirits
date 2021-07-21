@@ -7,27 +7,28 @@ using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class UserInterface : MonoBehaviour
+public abstract class UserInterface : MonoBehaviour
 {
 
-    public MouseItem mouseItem = new MouseItem();
-    public GameObject inventoryPrefab;
+    public PlayerController player;
     public InventoryObject inventory;
     
-    public int X_START;
-    public int Y_START;
-    public int X_SPACE_BETWEEN_ITEM;
-    public int NUMBER_OF_COLUMN;
-    public int Y_SPACE_BETWEEN_ITEMS;
+    
 
     bool inventoryStatus;
 
-    Dictionary<GameObject, InventorySlot> itemsDisplayed = new Dictionary<GameObject, InventorySlot>();
+    public Dictionary<GameObject, InventorySlot> slotsOnInterface = new Dictionary<GameObject, InventorySlot>();
     
     
     void Start()
     {
+        for (int i = 0; i < inventory.Container.Items.Length; i++)
+        {
+            inventory.Container.Items[i].parents = this;
+        }
         CreateSlots();
+        AddEvent(gameObject, EventTriggerType.PointerEnter, delegate {OnEnterinterface(gameObject); });
+        AddEvent(gameObject, EventTriggerType.PointerExit, delegate {OnExitinterface(gameObject); });
     }
 
     
@@ -38,10 +39,10 @@ public class UserInterface : MonoBehaviour
     }
 
     public void UpdateSlots(){
-        foreach (KeyValuePair<GameObject, InventorySlot> _slot in itemsDisplayed)
+        foreach (KeyValuePair<GameObject, InventorySlot> _slot in slotsOnInterface)
         {
-            if(_slot.Value.ID >= 0){ //Checking if the slot has an item in it
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.dataBase.GetItem[_slot.Value.item.Id].uiDisplay;
+            if(_slot.Value.item.Id >= 0){ //Checking if the slot has an item in it
+                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = _slot.Value.itemObject.uiDisplay;
 
                 _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
 
@@ -60,26 +61,9 @@ public class UserInterface : MonoBehaviour
         }
     }
 
-    public void CreateSlots(){
-        
-        itemsDisplayed = new Dictionary<GameObject, InventorySlot>();
-        for (int i = 0; i < inventory.Container.Items.Length; i++)
-        {
-            var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
-            obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
-            
-            AddEvent(obj, EventTriggerType.PointerEnter, delegate {OnEnter(obj); });
-            AddEvent(obj, EventTriggerType.PointerExit, delegate {OnExit(obj); });
-            AddEvent(obj, EventTriggerType.BeginDrag, delegate {OnDragStart(obj); });
-            AddEvent(obj, EventTriggerType.EndDrag, delegate {DragExit(obj); });
-            AddEvent(obj, EventTriggerType.Drag, delegate {OnDrag(obj); });
+    public abstract void CreateSlots();
 
-            itemsDisplayed.Add(obj, inventory.Container.Items[i]);
-        }
-
-    }
-
-    private void AddEvent(GameObject obj, EventTriggerType type, UnityAction<BaseEventData> action){
+    public void AddEvent(GameObject obj, EventTriggerType type, UnityAction<BaseEventData> action){
         EventTrigger trigger = obj.GetComponent<EventTrigger>();
         var eventTrigger = new EventTrigger.Entry();
         eventTrigger.eventID = type;
@@ -87,18 +71,23 @@ public class UserInterface : MonoBehaviour
         trigger.triggers.Add(eventTrigger);
     }
 
-    public void OnEnter(GameObject obj){
-        mouseItem.hoverObj = obj;
-        if(itemsDisplayed.ContainsKey(obj)){ //Checks if the slot has something inside of it.
-            mouseItem.hoverItem = itemsDisplayed[obj];
-        }
+    public void OnExitinterface(GameObject obj){
+        MouseData.interfaceMouseIsOver = null;
+    }
 
+    public void OnEnterinterface(GameObject obj){
+        MouseData.interfaceMouseIsOver = obj.GetComponent<UserInterface>();
+    }
+
+    public void OnEnter(GameObject obj){
+        MouseData.slotHoveredOver = obj;
+    
     }
 
     public void OnExit(GameObject obj){
         //Check if there is a slot
-        mouseItem.hoverObj = null;
-        mouseItem.hoverItem = null;
+        MouseData.slotHoveredOver = null;
+        
         
     }
 
@@ -108,32 +97,46 @@ public class UserInterface : MonoBehaviour
         rt.sizeDelta = new Vector2(110,110);
         mouseObject.transform.SetParent(transform.parent);
 
-        if(itemsDisplayed[obj].ID >= 0){
+        if(slotsOnInterface[obj].item.Id >= 0){
             var img = mouseObject.AddComponent<Image>();
-            img.sprite = inventory.dataBase.GetItem[itemsDisplayed[obj].ID].uiDisplay;
+            img.sprite = slotsOnInterface[obj].itemObject.uiDisplay;
             img.raycastTarget = false;
         }
 
-        mouseItem.obj = mouseObject;
-        mouseItem.item = itemsDisplayed[obj];
+        MouseData.tempItemBeingDragged = mouseObject;
+        
     }
 
     public void DragExit(GameObject obj){
-        if(mouseItem.hoverObj){
-            inventory.MoveItem(itemsDisplayed[obj], itemsDisplayed[mouseItem.hoverObj]);
+
+       
+        Destroy(MouseData.tempItemBeingDragged); 
+
+        //Check if the mouse is over an interface, if it is not then we can just destroy the item
+        //If the mouse is over a slot then we drop it, Call a "SwapItems functions" checks if the item can be dropped in the slot
+        //Checks if there is an item in the slot already, if so then we have to check if they are able to be swapped
+        if(MouseData.interfaceMouseIsOver == null){
+            //obj is the original object that we started dragging.
+            slotsOnInterface[obj].RemoveItem();
+            return; //We return because if we remove the item then we do not need to swap the item
         }
-        else{
-            inventory.RemoveItem(itemsDisplayed[obj].item);
+        if(MouseData.slotHoveredOver){
+            InventorySlot mouseHoverSlotData = MouseData.interfaceMouseIsOver.slotsOnInterface[MouseData.slotHoveredOver];
+            inventory.SwapItems(slotsOnInterface[obj], mouseHoverSlotData);
+            //We are pushing the slotsOnInterface with the object that is passed into the method (The object that we started dragging)
+            //Then we look inside the dictionary of lengths for the item we started dragging
+            //Then we simply try to swap it with the variable we set beforehand.
         }
-        Destroy(mouseItem.obj);
-        mouseItem.item = null;
+        
     }
+
+    
 
 
 
     public void OnDrag(GameObject obj){
-        if(mouseItem.obj != null){
-            mouseItem.obj.GetComponent<RectTransform>().position = Mouse.current.position.ReadValue();
+        if(MouseData.tempItemBeingDragged != null){
+            MouseData.tempItemBeingDragged.GetComponent<RectTransform>().position = Mouse.current.position.ReadValue();
         }
     }
 
@@ -143,24 +146,16 @@ public class UserInterface : MonoBehaviour
          gameObject.SetActive(!gameObject.activeSelf);
             inventoryStatus = !inventoryStatus;
 
-            // if (!inventoryStatus){
-            //     // cameraScript.enabled = false;
-            //     Cursor.lockState = CursorLockMode.None;
-            // }else{
-            //     // cameraScript.enabled = true;
-            //     Cursor.lockState = CursorLockMode.Locked;
-            // }
+            
     }    
 
-    public Vector3 GetPosition(int i){
-        return new Vector3(X_START + (X_SPACE_BETWEEN_ITEM * (i % NUMBER_OF_COLUMN)), Y_START + (-Y_SPACE_BETWEEN_ITEMS * (i/NUMBER_OF_COLUMN)), 0f);
-    }
+    
 }
 
-public class MouseItem{
-    public GameObject obj;
-    public InventorySlot item;
-    public InventorySlot hoverItem;
-    public GameObject hoverObj;
+public static class MouseData{
+
+    public static UserInterface interfaceMouseIsOver;
+    public static GameObject tempItemBeingDragged;
+    public static GameObject slotHoveredOver;
 }
 
