@@ -10,37 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48b6c4b6e8d52814283d292c693328f8, type: 3}
-  m_Name: 
+  m_Name: Player_Equipment
   m_EditorClassIdentifier: 
-  savePath: 
+  savePath: /Equipment.Save
   dataBase: {fileID: 11400000, guid: 07775522a422ce441b46de03fbb63559, type: 2}
   Container:
-    Items:
-    - AllowedItems: 01000000
-      parents: {fileID: 0}
-      item:
-        Name: 
-        Id: -1
-        buffs: []
-      amount: 0
-    - AllowedItems: 03000000
-      parents: {fileID: 0}
-      item:
-        Name: 
-        Id: -1
-        buffs: []
-      amount: 0
-    - AllowedItems: 04000000
-      parents: {fileID: 0}
+    Slots:
+    - AllowedItems: 00000000
       item:
         Name: 
         Id: -1
         buffs: []
       amount: 0
     - AllowedItems: 02000000
-      parents: {fileID: 0}
       item:
-        Name: Bow
-        Id: 0
+        Name: 
+        Id: -1
         buffs: []
-      amount: 1
+      amount: 0
+    - AllowedItems: 03000000
+      item:
+        Name: 
+        Id: -1
+        buffs: []
+      amount: 0
+    - AllowedItems: 01000000
+      item:
+        Name: 
+        Id: -1
+        buffs: []
+      amount: 0

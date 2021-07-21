@@ -1055,7 +1055,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 385517916}
-  m_LocalRotation: {x: -0.2430395, y: -0.00009682928, z: 0.000009426238, w: 0.97001636}
+  m_LocalRotation: {x: -0.24303952, y: -0.00009683784, z: 0.00000942707, w: 0.97001636}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1128,7 +1128,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 397912573}
-  m_LocalRotation: {x: -0.24173154, y: -0.00009680099, z: 0.000009555242, w: 0.97034323}
+  m_LocalRotation: {x: -0.24173154, y: -0.00009684061, z: 0.000009559153, w: 0.97034323}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1651,7 +1651,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab24357236c632346bc81ce20dd922fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 8548157134472695067}
   inventory: {fileID: 11400000, guid: 7714bf503bcc51f4da4511b7032aa24a, type: 2}
   slots:
   - {fileID: 8735160109648262083}
@@ -1720,6 +1719,7 @@ GameObject:
   - component: {fileID: 903231259}
   - component: {fileID: 903231258}
   - component: {fileID: 903231257}
+  - component: {fileID: 903231260}
   m_Layer: 0
   m_Name: EventManager
   m_TagString: Untagged
@@ -1797,6 +1797,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &903231260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903231256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09739e57dff60dc4ab96918dab5d8223, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 0}
+  unityEventResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1702289097}
+        m_TargetAssemblyTypeName: UserInterface, Assembly-CSharp
+        m_MethodName: CallUpdateSlots
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &924103409
 GameObject:
   m_ObjectHideFlags: 0
@@ -1994,7 +2022,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1015116347}
-  m_LocalRotation: {x: -0.2660845, y: -0.000097025775, z: 0.0000071162212, w: 0.96394974}
+  m_LocalRotation: {x: -0.2660845, y: -0.000097035416, z: 0.000007116928, w: 0.96394974}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3341,7 +3369,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1632539189}
-  m_LocalRotation: {x: -0.07281475, y: -0.000096980824, z: -0.000007080429, w: 0.9973455}
+  m_LocalRotation: {x: -0.07281475, y: -0.00009705231, z: -0.000007085648, w: 0.9973455}
   m_LocalPosition: {x: 490.00156, y: 2.3999999, z: 503.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -3599,7 +3627,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5021900f7a9030458475709bc56fafd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 8548157134472695067}
   inventory: {fileID: 11400000, guid: 4f026292b42c50f4badac39f037cc98f, type: 2}
   inventoryPrefab: {fileID: 3409893769136150297, guid: 92e881a18b1c9cb42a04b3bf1178babc, type: 3}
   X_START: -311
@@ -5088,6 +5115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: 4f026292b42c50f4badac39f037cc98f, type: 2}
+  equipment: {fileID: 11400000, guid: 7714bf503bcc51f4da4511b7032aa24a, type: 2}
   attackControl: {fileID: 6533706561930479259, guid: 4de724c32cee4cb4e950fbb7ae348b06, type: 3}
   movementControl: {fileID: 4051612399544564346, guid: 4de724c32cee4cb4e950fbb7ae348b06, type: 3}
   jumpControl: {fileID: -8182031442798803961, guid: 4de724c32cee4cb4e950fbb7ae348b06, type: 3}

@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     public InventoryObject inventory;
+    public InventoryObject equipment;
 
     
 
@@ -93,8 +94,11 @@ public class PlayerController : MonoBehaviour
     public void OnTriggerEnter(Collider other){
         var item = other.GetComponent<GroundItem>();
         if(item){
-            inventory.AddItem(new Item(item.item), 1);
-            Destroy(other.gameObject);
+            Item _item = new Item(item.item);
+            
+            if(inventory.AddItem(_item, 1)){
+                Destroy(other.gameObject);
+            }
         }
     }
     void Update()
@@ -129,8 +133,8 @@ public class PlayerController : MonoBehaviour
         
         //State actions
         // if(attacking){StartCoroutine(AttackAnim()); }
-        if(save){Debug.Log("Save"); inventory.Save();}
-        if(load){ inventory.Load();}
+        if(save){Debug.Log("Save"); inventory.Save(); equipment.Save();}
+        if(load){ inventory.Load(); equipment.Load();}
         if(inventoryLoad) {inventoryStatus.Raise(); playerStatus.Raise();}
 
         // Jumps
@@ -167,13 +171,10 @@ public class PlayerController : MonoBehaviour
     }
 
     private void OnApplicationQuit(){
-        inventory.Container.Items = new InventorySlot[24];
-    }
+        inventory.Clear();
+        equipment.Clear();
 
-    public void DisablePlayerScript(){
-        gameObject.SetActive(!gameObject.activeSelf);
-        changed = !changed;
-   
     }
-    
 }
+
+

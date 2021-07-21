@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum ItemType{
-    Food,
     Helmet,
     Weapon,
     Chestplate,
@@ -11,7 +10,7 @@ public enum ItemType{
     Default
 }
 
-public enum Attribute{
+public enum Attributes{
     Defense,
     Strength,
     Agility,
@@ -63,18 +62,23 @@ public class Item{
 }
 
 [System.Serializable]
-public class ItemBuff{
-    public Attribute attribute;
+public class ItemBuff : IModifier{
+
+    public Attributes attribute;
     public int value;
     public int min,max;
 
     public ItemBuff(int _min, int _max){
         min = _min;
         max = _max;
-        GenerataeValue();
+        GenerateValue();
     }
 
-    public void GenerataeValue(){
+    public void GenerateValue(){
         value = UnityEngine.Random.Range(min,max);
+    }
+
+    public void AddValue(ref int v){
+        v += value;
     }
 }

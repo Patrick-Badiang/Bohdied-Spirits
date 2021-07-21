@@ -12,7 +12,7 @@ public class StaticInterface : UserInterface
     public override void CreateSlots()
     {
         slotsOnInterface = new Dictionary<GameObject, InventorySlot>(); //Makes sure that there are no current links between Equipment Database and our equipment display;
-        for (int i = 0; i < inventory.Container.Items.Length; i++) //Loop through all equipment in our database
+        for (int i = 0; i < inventory.GetSlots.Length; i++) //Loop through all equipment in our database
         {
             var obj = slots[i]; //links the obj to each gameobject in the array
                                 //Take the slot prefabs, link them to the same slot in the database
@@ -24,7 +24,9 @@ public class StaticInterface : UserInterface
             AddEvent(obj, EventTriggerType.EndDrag, delegate {DragExit(obj); });
             AddEvent(obj, EventTriggerType.Drag, delegate {OnDrag(obj); });
 
-            slotsOnInterface.Add(obj, inventory.Container.Items[i]); //Add them to the actual items displayed
+            inventory.GetSlots[i].slotDisplay = obj;
+
+            slotsOnInterface.Add(obj, inventory.GetSlots[i]); //Add them to the actual items displayed
         }
     }
 }
