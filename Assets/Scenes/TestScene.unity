@@ -1128,7 +1128,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 397912573}
-  m_LocalRotation: {x: -0.24173154, y: -0.00009684061, z: 0.000009559153, w: 0.97034323}
+  m_LocalRotation: {x: -0.24173155, y: -0.00009683367, z: 0.0000095584655, w: 0.97034323}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2022,7 +2022,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1015116347}
-  m_LocalRotation: {x: -0.2660845, y: -0.000097035416, z: 0.000007116928, w: 0.96394974}
+  m_LocalRotation: {x: -0.26608452, y: -0.00009703009, z: 0.000007116536, w: 0.96394974}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2887,7 +2887,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!23 &1430852654
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3369,7 +3369,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1632539189}
-  m_LocalRotation: {x: -0.07281475, y: -0.00009705231, z: -0.000007085648, w: 0.9973455}
+  m_LocalRotation: {x: -0.072814755, y: -0.00009704897, z: -0.0000070854053, w: 0.9973455}
   m_LocalPosition: {x: 490.00156, y: 2.3999999, z: 503.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -5081,6 +5081,7 @@ GameObject:
   - component: {fileID: 8548157134472695067}
   - component: {fileID: 8548157134472695066}
   - component: {fileID: 8548157134472695069}
+  - component: {fileID: 8548157134472695070}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -5167,6 +5168,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8548157134472695070
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8548157134472695065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 110999a6e72e89d41ba79f3acff0c0d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipment: {fileID: 11400000, guid: 7714bf503bcc51f4da4511b7032aa24a, type: 2}
+  attributes:
+  - type: 0
+    value:
+      baseValue: 0
+      modifiedValue: 0
+  - type: 1
+    value:
+      baseValue: 0
+      modifiedValue: 0
+  - type: 2
+    value:
+      baseValue: 0
+      modifiedValue: 0
 --- !u!4 &8549039121918429090
 Transform:
   m_ObjectHideFlags: 0

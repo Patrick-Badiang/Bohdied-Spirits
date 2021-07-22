@@ -92,9 +92,9 @@ public class PlayerController : MonoBehaviour
     }
 
     public void OnTriggerEnter(Collider other){
-        var item = other.GetComponent<GroundItem>();
-        if(item){
-            Item _item = new Item(item.item);
+        var groundItem = other.GetComponent<GroundItem>();
+        if(groundItem){
+            Item _item = new Item(groundItem.item);
             
             if(inventory.AddItem(_item, 1)){
                 Destroy(other.gameObject);

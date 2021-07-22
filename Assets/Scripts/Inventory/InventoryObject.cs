@@ -6,12 +6,21 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.Runtime.Serialization;
 using System.IO;
 
+public enum InterfaceType{
+    Inventory,
+    Equipment,
+}
+
+
+
+
 [CreateAssetMenu(fileName = "New Inventory", menuName = "ScriptableObject/Inventory System/Inventory")]
 public class InventoryObject : ScriptableObject
 {
     
     public string savePath;
     public ItemDataBaseObject dataBase;
+    public InterfaceType type;
 
     public Inventory Container;
 
@@ -169,7 +178,6 @@ public class InventorySlot{
 
     public InventorySlot(){
         UpdateSlot(new Item(), 0);
-    
     }
 
     public InventorySlot(Item _item, int _amount){
@@ -178,13 +186,13 @@ public class InventorySlot{
 
 
     public void UpdateSlot(Item _item, int _amount){
-        
-        if(OnBeforeUpdate != null) OnBeforeUpdate.Invoke(this);
-        
+        if (OnBeforeUpdate != null)
+            OnBeforeUpdate.Invoke(this);
         item = _item;
         amount = _amount;
+        if (OnAfterUpdate != null)
+            OnAfterUpdate.Invoke(this);
 
-        if(OnAfterUpdate != null) OnAfterUpdate.Invoke(this); 
     }
 
     public void RemoveItem(){

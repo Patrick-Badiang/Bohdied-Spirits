@@ -27,11 +27,17 @@ public abstract class UserInterface : MonoBehaviour
 
         }
         CreateSlots();
+
+        slotsOnInterface.UpdateSlotDisplay();
+
         AddEvent(gameObject, EventTriggerType.PointerEnter, delegate {OnEnterinterface(gameObject); });
         AddEvent(gameObject, EventTriggerType.PointerExit, delegate {OnExitinterface(gameObject); });
     }
 
+
+    
     private void OnSlotUpdate(InventorySlot _slot){
+
         if(_slot.item.Id >= 0){ //Checking if the slot has an item in it
                 _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().sprite = _slot.itemObject.uiDisplay;
                 _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
