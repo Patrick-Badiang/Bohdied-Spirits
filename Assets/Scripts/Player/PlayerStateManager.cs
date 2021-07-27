@@ -9,18 +9,18 @@ public class PlayerStateManager : MonoBehaviour
     
     public void ChangeState(){
         
-        changed = !changed;
+        // changed = !changed;
 
-        if(!changed){
-            Time.timeScale = 0;
-            Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
+        // if(!changed){
+        //     Time.timeScale = 0;
+        //     Cursor.visible = true;
+        //     Cursor.lockState = CursorLockMode.None;
 
-        }else{
-            Time.timeScale = 1;
-            Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
-        }  
+        // }else{
+        //     Time.timeScale = 1;
+        //     Cursor.visible = false;
+        //     Cursor.lockState = CursorLockMode.Locked;
+        // }  
     }
 
     

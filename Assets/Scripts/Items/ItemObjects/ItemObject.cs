@@ -18,6 +18,8 @@ public enum Attributes{
 
 public abstract class ItemObject : ScriptableObject
 {
+
+    public GameObject characterDisplay;
     public Sprite uiDisplay;
     public bool stackable;
     public ItemType type;
@@ -27,11 +29,31 @@ public abstract class ItemObject : ScriptableObject
 
     public Item data = new Item();
 
+    public List<string> boneNames = new List<string>();
+    //This will change whenever we add or remove a characterDisplay
 
     public Item CreateItem(){
         Item newItem = new Item(this);
         return newItem;
 
+    }
+
+    private void OnValiedate(){ //Runs everytime in play mode and out of play mode whenever a variable is changed
+
+        boneNames.Clear();
+        if(characterDisplay == null)
+            return;
+        
+        if(!characterDisplay.GetComponent<SkinnedMeshRenderer>())
+            return;
+        
+        var renderer = characterDisplay.GetComponent<SkinnedMeshRenderer>();
+        var bones = renderer.bones;
+        
+        foreach (var t in bones)
+        {
+            boneNames.Add(t.name);
+        }
     }
 }
 
