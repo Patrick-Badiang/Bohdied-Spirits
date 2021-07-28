@@ -13,27 +13,17 @@ public class PlayerController : MonoBehaviour
     
 
     [Header("Inputs")]
-    [SerializeField]
-    private InputActionReference attackControl;
+    
     [SerializeField]
     private InputActionReference movementControl;
     [SerializeField]
     private InputActionReference jumpControl;
-    [SerializeField]
-    private InputActionReference saveControl;
-    [SerializeField]
-    private InputActionReference loadControl;
-    [SerializeField]
-    private InputActionReference inventoryControl;
+
     
     [SerializeField]
     private float playerSpeed = 5.0f;
 
-    [Header("Events")]
-    [SerializeField]
-    private VoidEvent inventoryStatus;
-    [SerializeField]
-    private VoidEvent playerStatus;
+    
 
 
     [Header("Animation Duration")]
@@ -47,10 +37,6 @@ public class PlayerController : MonoBehaviour
     public float gravityValue = -9.81f;
     [SerializeField]
     private float rotationSpeed = 4f;
-
-
-
-    
 
     private CharacterController controller;
     private Vector3 playerVelocity;
@@ -67,19 +53,13 @@ public class PlayerController : MonoBehaviour
     private void OnEnable(){
         movementControl.action.Enable();
         jumpControl.action.Enable();
-        // attackControl.action.Enable();
-        saveControl.action.Enable();
-        loadControl.action.Enable();
-        inventoryControl.action.Enable();
+        
     }
 
     private void OnDisable(){
         movementControl.action.Disable();
         jumpControl.action.Disable();
-        // attackControl.action.Disable();
-        saveControl.action.Disable();
-        loadControl.action.Disable();
-        inventoryControl.action.Disable();
+        
     }
 
     private void Awake()
@@ -124,17 +104,13 @@ public class PlayerController : MonoBehaviour
         }
 
         //State Conditions
-        bool attacking = attackControl.action.triggered;
         bool jumping = jumpControl.action.triggered;
-        bool save = saveControl.action.triggered;
-        bool load = loadControl.action.triggered;
-        bool inventoryLoad = inventoryControl.action.triggered;
+        
+        // bool inventoryLoad = inventoryControl.action.triggered;
         
         //State actions
-        // if(attacking){StartCoroutine(AttackAnim()); }
-        if(save){Debug.Log("Save"); inventory.Save(); equipment.Save();}
-        if(load){ inventory.Load(); equipment.Load();}
-        if(inventoryLoad) {inventoryStatus.Raise(); playerStatus.Raise();}
+        
+        // if(inventoryLoad) {inventoryStatus.Raise(); playerStatus.Raise();}
 
         // Jumps
         if (jumping)
@@ -161,6 +137,9 @@ public class PlayerController : MonoBehaviour
         
     }
 
+    public void StartAttack(){
+        StartCoroutine(AttackAnim());
+    }
     IEnumerator AttackAnim(){
           animator.SetBool("Attack", true);
 
@@ -174,6 +153,8 @@ public class PlayerController : MonoBehaviour
         equipment.Clear();
 
     }
+
+    
 }
 
 

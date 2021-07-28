@@ -27,7 +27,8 @@ public class Combat : MonoBehaviour
 
     public void DoDamage(Collider other){
         StartCoroutine(AttackAnimation());
-        Combat healthScript = other.GetComponent<Combat>();
+        PlayerStats healthScript = other.GetComponent<PlayerStats>();
+        
         if(healthScript != null){
             if(Time.timeScale > 0){
             var timeSinceLastShoot = Time.time - lastAttackTime;
@@ -35,7 +36,7 @@ public class Combat : MonoBehaviour
                 return;
             
             lastAttackTime = Time.time;
-            healthScript.TakeDamage(damage, elementType);
+            healthScript.TakeDamage(damage);
             }
         }
     }
@@ -46,7 +47,8 @@ public class Combat : MonoBehaviour
         yield return new WaitForSeconds(attackDuration);
     }
 
-    public void TakeDamage(int damage, ElementType passed_elementType){
+    public void TakeDamage(float damage, ElementType passed_elementType){
+        Debug.Log(health);
         CheckElement(passed_elementType);
 
         damage -= armor;
@@ -56,6 +58,7 @@ public class Combat : MonoBehaviour
 
         if(health > 0)
         health -= damage;
+        
         
         if(health <= 0){
             Die();

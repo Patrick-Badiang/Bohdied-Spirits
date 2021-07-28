@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 3704f1eb6f5f0f94c9b6fc3ebecd6944
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - onJump: {instanceID: 0}
+  - onAttack: {fileID: 11400000, guid: 2b840c16b0395014d8ae421ef0aa6942, type: 2}
+  - onSave: {fileID: 11400000, guid: 94c6f9931afb48441acd0073d569cfbe, type: 2}
+  - onLoad: {fileID: 11400000, guid: f33150e776f2d3240bf079607e4b3126, type: 2}
+  - onInventory: {fileID: 11400000, guid: bed1aed0d9734d34a9150d2841cb6010, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

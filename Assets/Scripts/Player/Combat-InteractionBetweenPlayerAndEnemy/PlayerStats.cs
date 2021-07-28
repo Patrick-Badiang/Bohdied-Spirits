@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     public InventoryObject equipment;
+    public VoidEvent onDeath;
     private BoneCombiner _boneCombiner;
 
     public Attribute[] attributes;
@@ -16,9 +17,25 @@ public class PlayerStats : MonoBehaviour
 
     public Transform weaponHoldTransform;
 
+    public int maxHealth;
+    public float currentHealth{get; private set; }
 
+    
 
+    public void TakeDamage(float damage){
+        float takendamage = damage * (1 - GetValue(0));
+        takendamage = Mathf.Clamp(takendamage, 0, int.MaxValue);
+        
+        currentHealth  -= takendamage;
+
+        Debug.Log(currentHealth);
+
+        if(currentHealth <= 0) onDeath.Raise();
+        
+    }
     private void Start(){
+
+        currentHealth = maxHealth;
 
         _boneCombiner = new BoneCombiner(gameObject);
         for (int i = 0; i < attributes.Length-1; i++)
@@ -32,7 +49,7 @@ public class PlayerStats : MonoBehaviour
 
         }
     }
-
+    
     public void OnRemoveItem(InventorySlot _slot){
 
         if(_slot.itemObject == null) return;
@@ -72,11 +89,7 @@ public class PlayerStats : MonoBehaviour
                         case ItemType.Weapon:
                             Destroy(_weapon.gameObject);
                         break;
-                    }
-                    
-                    
-
-                    
+                    }                    
                 }
                 
             break;
@@ -105,9 +118,7 @@ public class PlayerStats : MonoBehaviour
 
                 
                 if(_slot.itemObject.characterDisplay != null){
-                        
-
-                    
+        
                     switch(_slot.AllowedItems[0]){
                         case ItemType.Helmet:
                             _helmet = _boneCombiner.AddLimb(_slot.itemObject.characterDisplay, _slot.itemObject.boneNames);
@@ -125,15 +136,18 @@ public class PlayerStats : MonoBehaviour
                             _weapon = Instantiate(_slot.itemObject.characterDisplay, weaponHoldTransform, false).transform;
 
                         break;
-                    }
-                    
-                    
-
-                    
+                    }  
                 }
             break;
             
         }
+    }
+
+    public float GetValue(int i){
+        float modifiedValue =  attributes[i].value.ModifiedValue/100f;
+    
+
+        return modifiedValue;
     }
 
 

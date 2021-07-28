@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class PlayerStateManager : MonoBehaviour
 {
+    [SerializeField]
+    private VoidEvent onPause;
+    [SerializeField]
+    private VoidEvent onResume;
     bool changed;
     bool playerChanged;
-    
+        
     public void Awake(){
         changed = true;
     }
@@ -18,13 +22,23 @@ public class PlayerStateManager : MonoBehaviour
             Time.timeScale = 0;
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
-
+            onPause.Raise();
         }else{
             Time.timeScale = 1;
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+            onResume.Raise();
         }  
     }
+
+    public void Die(){
+        Time.timeScale = 0;
+        Debug.Log("Game Over");
+    }
+
+    
+
+    
 
     
 }

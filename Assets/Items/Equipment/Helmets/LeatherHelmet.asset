@@ -20,7 +20,11 @@ MonoBehaviour:
   data:
     Name: 
     Id: 3
-    buffs: []
+    buffs:
+    - attribute: 0
+      value: 0
+      min: 2
+      max: 5
   boneNames:
   - Hip
   - Spine
