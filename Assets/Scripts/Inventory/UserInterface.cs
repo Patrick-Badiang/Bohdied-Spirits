@@ -147,10 +147,8 @@ public abstract class UserInterface : MonoBehaviour
 
 
     public void LoadInventory(){
-         gameObject.SetActive(!gameObject.activeSelf);
+        gameObject.SetActive(!gameObject.activeSelf);
             inventoryStatus = !inventoryStatus;
-
-            
     }    
 
     

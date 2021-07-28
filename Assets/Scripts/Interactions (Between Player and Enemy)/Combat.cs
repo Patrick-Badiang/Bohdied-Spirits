@@ -13,7 +13,7 @@ public class Combat : MonoBehaviour
 
     [Header("Animations")]
     public float deathDelay;
-    //public float attackDuration;
+    public float attackDuration;
 
     [Header("Elements")]
     public float vulnerableDamage;
@@ -26,7 +26,7 @@ public class Combat : MonoBehaviour
 
 
     public void DoDamage(Collider other){
-        //StartCoroutine(AttackAnimation());
+        StartCoroutine(AttackAnimation());
         Combat healthScript = other.GetComponent<Combat>();
         if(healthScript != null){
             if(Time.timeScale > 0){
@@ -40,11 +40,11 @@ public class Combat : MonoBehaviour
         }
     }
 
-    //IEnumerator AttackAnimation(){
-        //Make animator parameter set to true
+    IEnumerator AttackAnimation(){
+        // Make animator parameter set to true
 
-        //yield return new WaitForSeconds(attackDuration);
-    //}
+        yield return new WaitForSeconds(attackDuration);
+    }
 
     public void TakeDamage(int damage, ElementType passed_elementType){
         CheckElement(passed_elementType);

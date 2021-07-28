@@ -14,6 +14,7 @@ public enum Attributes{
     Defense,
     Strength,
     Agility,
+    Health
 }
 
 public abstract class ItemObject : ScriptableObject
@@ -38,7 +39,10 @@ public abstract class ItemObject : ScriptableObject
 
     }
 
-    private void OnValiedate(){ //Runs everytime in play mode and out of play mode whenever a variable is changed
+    private void OnValidate(){ //Runs everytime in play mode and out of play mode whenever a variable is changed
+    
+        //Solved: in the OnValidate function I changed <SkinnedMeshRenderer> 
+        //to GetComponentInChildren<SkinnedMeshRenderer> and the script now finds my bone names
 
         boneNames.Clear();
         if(characterDisplay == null)
