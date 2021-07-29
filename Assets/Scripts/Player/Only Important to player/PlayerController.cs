@@ -9,8 +9,7 @@ public class PlayerController : MonoBehaviour
 {
     public InventoryObject inventory;
     public InventoryObject equipment;
-
-    
+    public LayerMask whatIsItem;
 
     [Header("Inputs")]
     
@@ -19,12 +18,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private InputActionReference jumpControl;
 
-    
     [SerializeField]
     private float playerSpeed = 5.0f;
-
-    
-
 
     [Header("Animation Duration")]
     public float attackAnimation;
@@ -52,14 +47,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnEnable(){
         movementControl.action.Enable();
-        jumpControl.action.Enable();
-        
+        jumpControl.action.Enable();   
     }
 
     private void OnDisable(){
         movementControl.action.Disable();
         jumpControl.action.Disable();
-        
     }
 
     private void Awake()
@@ -70,7 +63,7 @@ public class PlayerController : MonoBehaviour
         cameraMainTransform = Camera.main.transform;
     }
 
-    public void OnTriggerEnter(Collider other){
+    public void PickUpItem(Collider other){
         var groundItem = other.GetComponent<GroundItem>();
         if(groundItem){
             Item _item = new Item(groundItem.item);
@@ -80,8 +73,21 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    void CheckForItem()
+    {
+        Collider[] itemsToPickUp = Physics.OverlapSphere(transform.position, 1.5f, whatIsItem);
+
+        foreach (Collider item in itemsToPickUp)
+        {
+            PickUpItem(item);
+        }
+        
+         
+    }
     void Update()
     {
+        CheckForItem();
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
@@ -106,11 +112,7 @@ public class PlayerController : MonoBehaviour
         //State Conditions
         bool jumping = jumpControl.action.triggered;
         
-        // bool inventoryLoad = inventoryControl.action.triggered;
-        
         //State actions
-        
-        // if(inventoryLoad) {inventoryStatus.Raise(); playerStatus.Raise();}
 
         // Jumps
         if (jumping)
@@ -133,8 +135,6 @@ public class PlayerController : MonoBehaviour
             Quaternion rotation = Quaternion.Euler(0f, targetAngle, 0f); //We only want to rotate on the y axis
             transform.rotation = Quaternion.Lerp(transform.rotation,rotation,Time.deltaTime * rotationSpeed);
         }
-        
-        
     }
 
     public void StartAttack(){
@@ -153,8 +153,6 @@ public class PlayerController : MonoBehaviour
         equipment.Clear();
 
     }
-
-    
 }
 
 

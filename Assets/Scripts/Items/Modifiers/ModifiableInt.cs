@@ -11,7 +11,7 @@ public class ModifiableInt
     [SerializeField]
     private int baseValue;
 
-    public int BaseValue {get {return baseValue;} set {baseValue = value; UpdateModifiedValue();}}
+    public int BaseValue   {get {return baseValue;} set {baseValue = value; UpdateModifiedValue();}}
 
     [SerializeField]
     private int modifiedValue;
@@ -22,7 +22,7 @@ public class ModifiableInt
     public event ModifiedEvent ValueModified;
 
     public ModifiableInt(ModifiedEvent method = null){
-        modifiedValue = BaseValue; //Allows us to pull the ModifiedValue without it just being 0
+        // modifiedValue = BaseValue; //Allows us to pull the ModifiedValue without it just being 0
         if(method != null){
             ValueModified += method;
         }

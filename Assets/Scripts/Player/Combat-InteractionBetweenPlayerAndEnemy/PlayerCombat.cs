@@ -13,7 +13,6 @@ public class PlayerCombat : MonoBehaviour
 
     public ElementType elementType;
     
-
     public void Awake(){
         playerStats = GetComponent<PlayerStats>();
     }
@@ -23,7 +22,7 @@ public class PlayerCombat : MonoBehaviour
 
         foreach (Collider enemy in enemiesThatAreHit)
         {
-            enemy.GetComponent<Combat>().TakeDamage(DoMeleeDamage(playerStats.attributes[1].value.ModifiedValue), elementType);
+            enemy.GetComponent<Combat>().TakeDamage(DoMeleeDamage(playerStats.baseDamage), elementType);
         }
     }
 

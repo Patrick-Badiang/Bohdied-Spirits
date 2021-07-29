@@ -6,6 +6,10 @@ public class PlayerStats : MonoBehaviour
 {
     public InventoryObject equipment;
     public VoidEvent onDeath;
+
+    public int maxHealth;
+    public int baseDamage;
+
     private BoneCombiner _boneCombiner;
 
     public Attribute[] attributes;
@@ -17,7 +21,8 @@ public class PlayerStats : MonoBehaviour
 
     public Transform weaponHoldTransform;
 
-    public int maxHealth;
+    
+
     public float currentHealth{get; private set; }
 
     
