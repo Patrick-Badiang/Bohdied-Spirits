@@ -9,6 +9,7 @@ public class GroundItem : MonoBehaviour
     public ItemObject item;
 
 
-    
+    public void Awake(){
+    }
 
 }
