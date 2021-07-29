@@ -7,7 +7,10 @@ public class PlayerStats : MonoBehaviour
     public InventoryObject equipment;
     public VoidEvent onDeath;
 
-    public int maxHealth;
+    public FloatVariable health;
+    public FloatVariable maxHealth;
+    
+
     public int baseDamage;
 
     private BoneCombiner _boneCombiner;
@@ -31,16 +34,15 @@ public class PlayerStats : MonoBehaviour
         float takendamage = damage * (1 - GetValue(0));
         takendamage = Mathf.Clamp(takendamage, 0, int.MaxValue);
         
-        currentHealth  -= takendamage;
+        health.ApplyChange(-takendamage);
 
-        Debug.Log(currentHealth);
-
-        if(currentHealth <= 0) onDeath.Raise();
-        
+        if(health.Value <= 0 ){
+            onDeath.Raise();
+        }
     }
     private void Start(){
 
-        currentHealth = maxHealth;
+        health.SetValue(maxHealth);
 
         _boneCombiner = new BoneCombiner(gameObject);
         for (int i = 0; i < attributes.Length-1; i++)
@@ -71,6 +73,7 @@ public class PlayerStats : MonoBehaviour
                     for (int j = 0; j < attributes.Length; j++) //Checks each buffs attribute
                     {
                         if(attributes[j].type == _slot.item.buffs[i].attribute) //Then comapres the attributes to the attributes on the character
+                        
                         attributes[j].value.RemoveModifier(_slot.item.buffs[i]); //Finally removes the attribute to the character
                     }
                 }
