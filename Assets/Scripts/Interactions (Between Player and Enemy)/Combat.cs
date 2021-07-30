@@ -52,7 +52,7 @@ public class Combat : MonoBehaviour
         damage -= armor;
         damage = Mathf.Clamp(damage, 0, int.MaxValue); //Makes sure that the damage never reaches below zero
 
-        if(CheckElement(passed_elementType)){ damage *= 2;}
+        if(CheckElement(passed_elementType)){ damage *= vulnerableDamage;}
 
         if(health > 0)
         health -= damage;
