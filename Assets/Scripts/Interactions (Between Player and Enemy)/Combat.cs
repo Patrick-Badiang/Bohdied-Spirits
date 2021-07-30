@@ -48,13 +48,11 @@ public class Combat : MonoBehaviour
     }
 
     public void TakeDamage(float damage, ElementType passed_elementType){
-        Debug.Log(health);
-        CheckElement(passed_elementType);
 
         damage -= armor;
         damage = Mathf.Clamp(damage, 0, int.MaxValue); //Makes sure that the damage never reaches below zero
 
-        if(vulnerable){ damage *= 2;}
+        if(CheckElement(passed_elementType)){ damage *= 2;}
 
         if(health > 0)
         health -= damage;
@@ -65,13 +63,15 @@ public class Combat : MonoBehaviour
         }
     }
 
-    void CheckElement(ElementType passed_elementType){
+    bool CheckElement(ElementType passed_elementType){
         for(int i = 0; i < vulnerableElementType.Length; i++){
             if(vulnerableElementType[i] == passed_elementType){
-                vulnerable = true;
+                return true;
+                
             }
-            vulnerable = false;      
+            return false;      
         }
+        return false;
     }
 
     void Die(){
