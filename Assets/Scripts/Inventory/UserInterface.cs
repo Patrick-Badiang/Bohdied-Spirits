@@ -11,6 +11,7 @@ public abstract class UserInterface : MonoBehaviour
 {
 
     public InventoryObject inventory;
+    
 
     bool inventoryStatus;
 
@@ -36,22 +37,7 @@ public abstract class UserInterface : MonoBehaviour
 
 
     
-    private void OnSlotUpdate(InventorySlot _slot){
-
-        if(_slot.item.Id >= 0){ //Checking if the slot has an item in it
-                _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().sprite = _slot.itemObject.uiDisplay;
-                _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
-                _slot.slotDisplay.GetComponentInChildren<TextMeshProUGUI>().text = _slot.amount == 1 ? "": _slot.amount.ToString("n0");
-
-
-            }
-            else{
-                _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
-                _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
-                _slot.slotDisplay.GetComponentInChildren<TextMeshProUGUI>().text = "";
-
-            }
-    }
+    public abstract void  OnSlotUpdate(InventorySlot _slot);
 
 
     public abstract void CreateSlots();
@@ -122,6 +108,7 @@ public abstract class UserInterface : MonoBehaviour
         if(MouseData.interfaceMouseIsOver == null){
             //obj is the original object that we started dragging.
             slotsOnInterface[obj].RemoveItem();
+            Instantiate(obj, transform.position, transform.rotation);
             return; //We return because if we remove the item then we do not need to swap the item
         }
         if(MouseData.slotHoveredOver){

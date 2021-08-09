@@ -63,6 +63,7 @@ public class PlayerController : MonoBehaviour
         cameraMainTransform = Camera.main.transform;
     }
 
+    
     public void PickUpItem(Collider other){
         var groundItem = other.GetComponent<GroundItem>();
         if(groundItem){
@@ -151,7 +152,6 @@ public class PlayerController : MonoBehaviour
     private void OnApplicationQuit(){
         inventory.Clear();
         equipment.Clear();
-
     }
 }
 

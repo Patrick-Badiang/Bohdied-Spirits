@@ -36,6 +36,10 @@ public class PlayerStateManager : MonoBehaviour
         Debug.Log("Game Over");
     }
 
+    public void Idle(){
+        
+    }
+
     
 
     

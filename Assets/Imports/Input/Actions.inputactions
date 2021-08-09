@@ -75,7 +75,7 @@
                     "id": "b16596fd-ba85-4d0d-af95-752632c1dbf3",
                     "expectedControlType": "Button",
                     "processors": "",
-                    "interactions": "Press(behavior=2)"
+                    "interactions": "SlowTap"
                 },
                 {
                     "name": "Save",

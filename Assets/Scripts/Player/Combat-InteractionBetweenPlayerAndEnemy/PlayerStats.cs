@@ -141,7 +141,10 @@ public class PlayerStats : MonoBehaviour
                         break;
 
                         case ItemType.Weapon:
-                            _weapon = Instantiate(_slot.itemObject.characterDisplay, weaponHoldTransform, false).transform;
+                            var newObject = Instantiate(_slot.itemObject.characterDisplay, weaponHoldTransform, false);
+                            // newObject.layer = LayerMask.NameToLayer("Equipment");
+                            _weapon = newObject.transform;
+                            
 
                         break;
                     }  

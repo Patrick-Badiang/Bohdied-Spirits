@@ -28,8 +28,11 @@ public class BoneCombiner
     }
 
     public Transform ProcessBonedObject(SkinnedMeshRenderer renderer, IReadOnlyList<string> boneNames){
-        var bonedObject = new GameObject().transform;
+        var newObject = new GameObject();
+        newObject.layer =  LayerMask.NameToLayer("Equipment");
+        var bonedObject = newObject.transform;
         //Created subObject
+        
 
         var meshRenderer = bonedObject.gameObject.AddComponent<SkinnedMeshRenderer>();
         //Added the renderer

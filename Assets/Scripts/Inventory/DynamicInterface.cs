@@ -1,6 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class DynamicInterface : UserInterface
@@ -14,6 +15,23 @@ public class DynamicInterface : UserInterface
     public int X_SPACE_BETWEEN_ITEM;
     public int NUMBER_OF_COLUMN;
     public int Y_SPACE_BETWEEN_ITEMS;
+
+    public override void OnSlotUpdate(InventorySlot _slot){
+
+        if(_slot.item.Id >= 0){ //Checking if the slot has an item in it
+                _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().sprite = _slot.itemObject.uiDisplay;
+                _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
+                _slot.slotDisplay.GetComponentInChildren<TextMeshProUGUI>().text = _slot.amount == 1 ? "": _slot.amount.ToString("n0");
+
+
+            }
+            else{
+                _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
+                _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
+                _slot.slotDisplay.GetComponentInChildren<TextMeshProUGUI>().text = "";
+
+            }
+    }
 
     public override void CreateSlots(){
         
