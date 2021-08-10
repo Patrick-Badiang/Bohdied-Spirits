@@ -28,7 +28,7 @@ public class PlayerCombat : MonoBehaviour
 
     public float DoMeleeDamage(float damageBeingDone){
         float finaldamageBeingDone = damageBeingDone * (1 + playerStats.GetValue(1));
-        Debug.Log(damageBeingDone);
+
         return finaldamageBeingDone;
     }
 

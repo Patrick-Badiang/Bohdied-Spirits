@@ -8,10 +8,10 @@ public class PlayerDisplayModel : MonoBehaviour
     public Transform playerDisplayLookPoint;
 
     public void RotateRight(){
-        playerDisplayLookPoint.Rotate(0, 90, 0);
+        playerDisplayLookPoint.Rotate(0, 45, 0);
     }
 
     public void RotateLeft(){
-        playerDisplayLookPoint.Rotate(0, -90, 0);
+        playerDisplayLookPoint.Rotate(0, -45, 0);
     }
 }
