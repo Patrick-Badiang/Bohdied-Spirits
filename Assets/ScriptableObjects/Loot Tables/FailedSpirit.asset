@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b01fc3847da3a0c4599fbba0c4f03eec, type: 3}
+  m_Name: FailedSpirit
+  m_EditorClassIdentifier: 
+  equipmentThatCanBeDropped:
+  - equipmentToBeDropped: {fileID: 3236243207825916485, guid: 7b4f51e3367eb1f4ea747bc2613c873c, type: 3}
+    chanceOfDrop: 25
+  - equipmentToBeDropped: {fileID: 3460038314208442494, guid: 9488e1eb6b5c2574fbe357b72ec94119, type: 3}
+    chanceOfDrop: 25
+  - equipmentToBeDropped: {fileID: 8352701651106494396, guid: 48529c069355cde44ae188b64afa63d7, type: 3}
+    chanceOfDrop: 25
+  - equipmentToBeDropped: {fileID: 7655635452682218858, guid: 69621c835d25f3a4ba3dbf97ac7c6c0b, type: 3}
+    chanceOfDrop: 25

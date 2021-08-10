@@ -15,13 +15,15 @@ public class ImageFillSetter : MonoBehaviour
         public FloatReference Max;
 
         [Tooltip("Image to set the fill amount on." )]
-        public Image Image;
+        public Image healthFill;
+        public Image healthHeart;
 
         private void Update()
         {
-            Image.fillAmount = Mathf.Clamp01(
+            healthFill.fillAmount = Mathf.Clamp01(
                 Mathf.InverseLerp(Min, Max, Variable));
 
-            
+            healthHeart.fillAmount = Mathf.Clamp01(
+                Mathf.InverseLerp(Min, Max, Variable));
         }
     }

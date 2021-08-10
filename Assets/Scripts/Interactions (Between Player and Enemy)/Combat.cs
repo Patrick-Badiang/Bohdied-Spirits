@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Combat : MonoBehaviour
 {
+    [Header("Loot Table")]
+    public RandomLoot lootTable;
+    public Transform whereToSpawn;
+
+    int total;
+    int randomNumber;
+
     [Header("Stats")]
     public float health;
     public int damage;
@@ -77,6 +84,23 @@ public class Combat : MonoBehaviour
     void Die(){
 
        gameObject.SetActive(false);
-        
+
+        foreach (var item in lootTable.equipmentThatCanBeDropped)
+        {
+            total += item.chanceOfDrop;
+        }
+
+        randomNumber = Random.Range(0, total);
+
+        foreach (var weight in lootTable.equipmentThatCanBeDropped)
+        {
+            if(randomNumber <= weight.chanceOfDrop){
+                //Award Item
+                Instantiate(weight.equipmentToBeDropped, whereToSpawn.position, whereToSpawn.rotation);
+            }
+            else{
+                randomNumber -= weight.chanceOfDrop;
+            }
+        }
     }
 }
