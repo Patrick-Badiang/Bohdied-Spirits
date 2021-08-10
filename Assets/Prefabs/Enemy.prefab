@@ -170,7 +170,7 @@ MonoBehaviour:
   health: 100
   damage: 10
   armor: 0
-  attackSpeed: 1
+  attackSpeed: 2
   deathDelay: 0
   attackDuration: 1
   vulnerableDamage: 5
@@ -222,7 +222,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 16.7
-  angle: 148.98
+  angle: 179.93
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
