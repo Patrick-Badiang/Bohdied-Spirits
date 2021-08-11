@@ -22,6 +22,7 @@ public class EnemyFSM : MonoBehaviour
     NavMeshAgent agent;
 
     void Awake(){
+        
         agent = GetComponentInParent<NavMeshAgent>();
         combat = GetComponentInParent<Combat>();
     }

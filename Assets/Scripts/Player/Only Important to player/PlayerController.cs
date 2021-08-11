@@ -13,13 +13,12 @@ public class PlayerController : MonoBehaviour
 
     [Header("Inputs")]
     
-    [SerializeField]
-    private InputActionReference movementControl;
-    [SerializeField]
-    private InputActionReference jumpControl;
+    [SerializeField] private InputActionReference movementControl;
+    
+    [SerializeField] private InputActionReference jumpControl;
 
-    [SerializeField]
-    private float playerSpeed = 5.0f;
+    [SerializeField] private float playerSpeed = 5.0f;
+    
 
     [Header("Animation Duration")]
     public float attackAnimation;
@@ -30,9 +29,14 @@ public class PlayerController : MonoBehaviour
     public float doubleJumpHeight;
 
     public float gravityValue = -9.81f;
-    [SerializeField]
-    private float rotationSpeed = 4f;
+    [SerializeField] private float rotationSpeed = 4f;
+    
 
+    [Header("Slope")]
+    [SerializeField] float slopeForceRayLength;
+    
+    [SerializeField] float slopeForce;
+    
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool groundedPlayer;
@@ -41,6 +45,7 @@ public class PlayerController : MonoBehaviour
     private float jumpCount;
 
     bool changed;
+    bool jump;
     
     Combat combat;
     Animator animator;
@@ -94,6 +99,7 @@ public class PlayerController : MonoBehaviour
         {
             playerVelocity.y = 0f;
             jumpCount = 0;
+            jump = false;
         }
 
         Vector2 movement = movementControl.action.ReadValue<Vector2>();       
@@ -108,6 +114,10 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Move", true);
         }else{
             animator.SetBool("Move", false);
+        }
+
+        if((movement.x != 0f) || (movement.y != 0f) && OnSlope()){
+            controller.Move(Vector3.down * controller.height/2 * slopeForce * Time.deltaTime);
         }
 
         //State Conditions
@@ -136,6 +146,20 @@ public class PlayerController : MonoBehaviour
             Quaternion rotation = Quaternion.Euler(0f, targetAngle, 0f); //We only want to rotate on the y axis
             transform.rotation = Quaternion.Lerp(transform.rotation,rotation,Time.deltaTime * rotationSpeed);
         }
+    }
+
+    public bool OnSlope(){
+        if(jump)
+            return false;
+        
+        RaycastHit hit;
+
+        if(Physics.Raycast(transform.position, Vector3.down, out hit, controller.height / 2 * slopeForceRayLength))
+
+            if(hit.normal != Vector3.up)
+                return true;
+
+        return false;
     }
 
     public void StartAttack(){
