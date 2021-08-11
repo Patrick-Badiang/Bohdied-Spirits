@@ -170,7 +170,7 @@ MonoBehaviour:
   health: 100
   damage: 10
   armor: 0
-  attackSpeed: 2
+  attackSpeed: 4
   deathDelay: 0
   attackDuration: 1
   vulnerableDamage: 5
