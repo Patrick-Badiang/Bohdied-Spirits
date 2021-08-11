@@ -1169,7 +1169,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 397912573}
-  m_LocalRotation: {x: -0.10955151, y: -0.00010394058, z: 0.00002464084, w: 0.9939812}
+  m_LocalRotation: {x: -0.109551504, y: -0.00010393983, z: 0.000024640662, w: 0.9939812}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2421,7 +2421,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1015116347}
-  m_LocalRotation: {x: -0.15427217, y: -0.00010495033, z: 0.000019928451, w: 0.98802847}
+  m_LocalRotation: {x: -0.15427217, y: -0.00010495034, z: 0.000019928453, w: 0.98802847}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4087,7 +4087,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1632539189}
-  m_LocalRotation: {x: 0.061460093, y: -0.00010659661, z: 0.000006563848, w: 0.9981096}
+  m_LocalRotation: {x: 0.0614601, y: -0.000106596206, z: 0.0000065638233, w: 0.9981096}
   m_LocalPosition: {x: 490.0017, y: 9.53, z: 503.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -6110,7 +6110,7 @@ MonoBehaviour:
   doubleJumpHeight: 1
   gravityValue: -20
   rotationSpeed: 4
-  slopeForceRayLength: 1.5
+  slopeForceRayLength: 2
   slopeForce: 2
 --- !u!114 &6561529092545154413
 MonoBehaviour:

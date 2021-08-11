@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour
     private float jumpCount;
 
     bool changed;
-    bool jump;
+    bool jump = true;
     
     Combat combat;
     Animator animator;
@@ -99,7 +99,6 @@ public class PlayerController : MonoBehaviour
         {
             playerVelocity.y = 0f;
             jumpCount = 0;
-            jump = false;
         }
 
         Vector2 movement = movementControl.action.ReadValue<Vector2>();       
@@ -116,17 +115,17 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("Move", false);
         }
 
-        if((movement.x != 0f) || (movement.y != 0f) && OnSlope()){
+        if((movement.x != 0f) || (movement.y != 0f) && (OnSlope() == true)){
             controller.Move(Vector3.down * controller.height/2 * slopeForce * Time.deltaTime);
         }
 
         //State Conditions
-        bool jumping = jumpControl.action.triggered;
+        jump = jumpControl.action.triggered;
         
         //State actions
 
         // Jumps
-        if (jumping)
+        if (jump)
         {
             if(jumpCount == 0){
                 playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
