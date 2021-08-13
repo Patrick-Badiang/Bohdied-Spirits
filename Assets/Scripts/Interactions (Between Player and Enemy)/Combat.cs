@@ -85,7 +85,7 @@ public class Combat : MonoBehaviour
 
        gameObject.SetActive(false);
 
-        foreach (var item in lootTable.equipmentThatCanBeDropped)
+        foreach (var item in lootTable.equipmentThatCanBeDropped)//testing git
         {
             total += item.chanceOfDrop;
         }
