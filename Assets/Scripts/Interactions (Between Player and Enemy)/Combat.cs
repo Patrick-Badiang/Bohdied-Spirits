@@ -56,6 +56,7 @@ public class Combat : MonoBehaviour
 
     public void TakeDamage(float damage, ElementType passed_elementType){
 
+        Debug.Log(damage);
         damage -= armor;
         damage = Mathf.Clamp(damage, 0, int.MaxValue); //Makes sure that the damage never reaches below zero
 
@@ -85,7 +86,7 @@ public class Combat : MonoBehaviour
 
        gameObject.SetActive(false);
 
-        foreach (var item in lootTable.equipmentThatCanBeDropped)//testing git
+        foreach (var item in lootTable.equipmentThatCanBeDropped)
         {
             total += item.chanceOfDrop;
         }

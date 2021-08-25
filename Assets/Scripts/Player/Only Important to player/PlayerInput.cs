@@ -13,14 +13,18 @@ public class PlayerInput : MonoBehaviour
     [SerializeField]
     private VoidEvent onLoad;
     [SerializeField]
-    private VoidEvent onInventory;    
+    private VoidEvent onInventory;   
+
+    [SerializeField]
+    private VoidEvent onAbility1;   
+
 
     
     void OnMove(InputValue value){        }
     void OnJump(InputValue value){}
     void OnMouse(InputValue value){}
     void OnAttack(InputValue value){          onAttack.Raise(); }
-    void OnAbility1(InputValue value){}
+    void OnAbility1(InputValue value){        onAbility1.Raise();}
     void OnAbility2(InputValue value){}
     void OnAbility3(InputValue value){}
     void OnAbility4(InputValue value){}
