@@ -23,6 +23,8 @@ public class AbilityCoolDown : MonoBehaviour
         InitializeAbility(ability, weaponHolder);
     }
 
+    
+
     public void SetAbilityUi(Ability _ability){
         if(ability == null)
         ability = _ability;
@@ -67,8 +69,14 @@ public class AbilityCoolDown : MonoBehaviour
         darkMask.fillAmount = coolDownTimeLeft / coolDownDiration;
     }
 
+    public void CheckCoolDown(){
+        if(canBetriggered){
+            Buttontriggered();
+        }
+        else 
+        return;
+    }
     public void Buttontriggered(){
-        if(canBetriggered)
         nextReadyTime = coolDownDiration + Time.time;
         coolDownTimeLeft = coolDownDiration;
         darkMask.enabled = true;

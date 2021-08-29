@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2afdae6dc44253479df3be0588a678a, type: 3}
-  m_Name: Empty Ability
+  m_Script: {fileID: 11500000, guid: b9d7e52827d39f946a532553ef895c11, type: 3}
+  m_Name: CommonSpeedBuff
   m_EditorClassIdentifier: 
-  _name: Null
-  _sprite: {fileID: 21300000, guid: 46860b6c6b5ffae47b0d4f1b94fc5df0, type: 3}
-  _sound: {fileID: 0}
-  _baseCoolDown: 1
-  forceValue: 500
-  projectile: {fileID: 0}
+  model: {fileID: 0}
+  speedBonus: 0

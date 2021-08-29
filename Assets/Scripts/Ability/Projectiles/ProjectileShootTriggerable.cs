@@ -12,5 +12,7 @@ public class ProjectileShootTriggerable : MonoBehaviour
         Rigidbody clonedObject = Instantiate(rb, bulletSpawn.position, bulletSpawn.rotation) as Rigidbody;
 
         clonedObject.AddForce(bulletSpawn.transform.forward * forceValue);
+
+        
     }
 }

@@ -1,35 +1,34 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
+[RequireComponent(typeof(Health))]
+[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(Collider))]
 public class Combat : MonoBehaviour
 {
-    [Header("Loot Table")]
-    public RandomLoot lootTable;
+    public EnemySO enemy;
     public Transform whereToSpawn;
 
-    int total;
-    int randomNumber;
 
-    [Header("Stats")]
-    public float health;
-    public int damage;
-    public int armor;
-    public int attackSpeed;
+    float health;
 
 
-    [Header("Animations")]
-    public float deathDelay;
-    public float attackDuration;
-
-    [Header("Elements")]
-    public float vulnerableDamage;
-    public ElementType elementType;
-    public ElementType[] vulnerableElementType;
-
-
+    Health _healthUi;
     bool vulnerable;
     float lastAttackTime;
+
+    public void Awake(){
+        GameObject visuals = Instantiate(enemy.enemyModel);
+        visuals.transform.SetParent(this.transform);
+        visuals.transform.localPosition = Vector3.zero;
+        visuals.transform.rotation = Quaternion.identity;
+
+        health = enemy.health;
+        _healthUi = GetComponent<Health>();
+        _healthUi.SetMaxHealth(health, 0);
+    }
 
 
     public void DoDamage(Collider other){
@@ -39,11 +38,11 @@ public class Combat : MonoBehaviour
         if(healthScript != null){
             if(Time.timeScale > 0){
             var timeSinceLastShoot = Time.time - lastAttackTime;
-            if(timeSinceLastShoot < attackSpeed)
+            if(timeSinceLastShoot < enemy.attackSpeed)
                 return;
             
             lastAttackTime = Time.time;
-            healthScript.TakeDamage(damage);
+            healthScript.TakeDamage(enemy.damage);
             }
         }
     }
@@ -51,19 +50,20 @@ public class Combat : MonoBehaviour
     IEnumerator AttackAnimation(){
         // Make animator parameter set to true
 
-        yield return new WaitForSeconds(attackDuration);
+        yield return new WaitForSeconds(enemy.attackDuration);
     }
 
     public void TakeDamage(float damage, ElementType passed_elementType){
 
-        Debug.Log(damage);
-        damage -= armor;
+        damage -= enemy.armor;
         damage = Mathf.Clamp(damage, 0, int.MaxValue); //Makes sure that the damage never reaches below zero
 
-        if(CheckElement(passed_elementType)){ damage *= vulnerableDamage;}
+        if(CheckElement(passed_elementType)){ damage *= enemy.vulnerableDamage;}
+        
 
         if(health > 0)
         health -= damage;
+        _healthUi.SetHealth(health);
         
         
         if(health <= 0){
@@ -72,8 +72,8 @@ public class Combat : MonoBehaviour
     }
 
     bool CheckElement(ElementType passed_elementType){
-        for(int i = 0; i < vulnerableElementType.Length; i++){
-            if(vulnerableElementType[i] == passed_elementType){
+        for(int i = 0; i < enemy.vulnerableElementType.Length; i++){
+            if(enemy.vulnerableElementType[i] == passed_elementType){
                 return true;
                 
             }
@@ -86,21 +86,21 @@ public class Combat : MonoBehaviour
 
        gameObject.SetActive(false);
 
-        foreach (var item in lootTable.equipmentThatCanBeDropped)
+        foreach (var item in enemy.lootTable.equipmentThatCanBeDropped)
         {
-            total += item.chanceOfDrop;
+            enemy.total += item.chanceOfDrop;
         }
 
-        randomNumber = Random.Range(0, total);
+        enemy.randomNumber = Random.Range(0, enemy.total);
 
-        foreach (var weight in lootTable.equipmentThatCanBeDropped)
+        foreach (var weight in enemy.lootTable.equipmentThatCanBeDropped)
         {
-            if(randomNumber <= weight.chanceOfDrop){
+            if(enemy.randomNumber <= weight.chanceOfDrop){
                 //Award Item
                 Instantiate(weight.equipmentToBeDropped, whereToSpawn.position, whereToSpawn.rotation);
             }
             else{
-                randomNumber -= weight.chanceOfDrop;
+                enemy.randomNumber -= weight.chanceOfDrop;
             }
         }
     }

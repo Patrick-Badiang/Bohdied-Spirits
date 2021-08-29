@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2afdae6dc44253479df3be0588a678a, type: 3}
-  m_Name: FireBall
+  m_Name: Spirit Bomb
   m_EditorClassIdentifier: 
   _name: FireBall
   _sprite: {fileID: 21300000, guid: daf36e16bfad29c4ea7d8abac36b8185, type: 3}
