@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff08c37ca571c6640a35fa98875fac46, type: 3}
+  m_Name: Moss_Skeleton
+  m_EditorClassIdentifier: 
+  enemyModel: {fileID: 2582039237014975116, guid: 0ec8cae3761534609bc5e97956390472, type: 3}
+  lootTable: {fileID: 11400000, guid: 6516a3d89ca37473a920259a13da12cf, type: 2}
+  total: 0
+  randomNumber: 0
+  health: 30
+  damage: 2
+  armor: 0
+  attackSpeed: 2
+  deathDelay: 1
+  attackDuration: 1
+  vulnerableDamage: 2
+  elementType: {fileID: 11400000, guid: dc0705f7e039c924bbc1a1f26c3916ad, type: 2}
+  vulnerableElementType:
+  - {fileID: 11400000, guid: 5eb1cee673c5d114d9f0a86c03067bdc, type: 2}

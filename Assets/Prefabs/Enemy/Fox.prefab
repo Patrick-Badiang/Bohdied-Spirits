@@ -308,7 +308,7 @@ GameObject:
   - component: {fileID: 4558967106146044381}
   - component: {fileID: 447976533}
   m_Layer: 7
-  m_Name: Enemy
+  m_Name: Fox
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
