@@ -40,6 +40,8 @@ public class PlayerStats : MonoBehaviour
             onDeath.Raise();
         }
     }
+
+    
     private void Start(){
 
         health.SetValue(maxHealth);

@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9d7e52827d39f946a532553ef895c11, type: 3}
-  m_Name: CommonSpeedBuff
+  m_Script: {fileID: 11500000, guid: 4166e70b92cf84d41b079fec57c7f58a, type: 3}
+  m_Name: OnAim
   m_EditorClassIdentifier: 
-  model: {fileID: 0}
-  speedBonus: 0

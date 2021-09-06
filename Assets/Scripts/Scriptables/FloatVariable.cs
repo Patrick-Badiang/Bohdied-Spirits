@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Health Reference", menuName = ("ScriptableObject/Health/New Health"))]
+[CreateAssetMenu(fileName = "New Variable Reference", menuName = ("ScriptableObject/Scriptable/New Float"))]
     public class FloatVariable : ScriptableObject
     {
 #if UNITY_EDITOR
@@ -10,6 +10,10 @@ using UnityEngine;
         public string DeveloperDescription = "";
 #endif
         public float Value;
+
+        public void Awake(){
+            Value = 0;
+        }
 
         public void SetValue(float value)
         {

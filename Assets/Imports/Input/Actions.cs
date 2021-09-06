@@ -88,7 +88,7 @@ public class @Actions : IInputActionCollection, IDisposable
                     ""id"": ""b16596fd-ba85-4d0d-af95-752632c1dbf3"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
-                    ""interactions"": ""SlowTap""
+                    ""interactions"": """"
                 },
                 {
                     ""name"": ""Save"",

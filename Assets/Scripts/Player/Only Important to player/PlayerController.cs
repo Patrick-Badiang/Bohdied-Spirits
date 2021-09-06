@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField] private InputActionReference jumpControl;
 
-    [SerializeField] private float playerSpeed = 5.0f;
+    public float playerSpeed = 5.0f;
     
 
     [Header("Animation Duration")]
@@ -68,7 +68,16 @@ public class PlayerController : MonoBehaviour
         cameraMainTransform = Camera.main.transform;
     }
 
-    
+    public void BuffIsHit(int _bonus){
+        StartCoroutine(GiveBuff(_bonus));
+    }
+
+    public IEnumerator GiveBuff(int _speedBonus){
+        playerSpeed += _speedBonus;
+
+        yield return new WaitForSeconds(2);
+        playerSpeed -= _speedBonus;
+    }
     public void PickUpItem(Collider other){
         var groundItem = other.GetComponent<GroundItem>();
         if(groundItem){
@@ -105,7 +114,7 @@ public class PlayerController : MonoBehaviour
         Vector3 move = new Vector3(movement.x, 0, movement.y);
 
         //Moves the character in terms of the camera rotation
-        move = cameraMainTransform.forward * move.z + cameraMainTransform.right * move.x;
+        move = cameraMainTransform.forward.normalized * move.z + cameraMainTransform.right.normalized * move.x;
         move.y = 0f;
         
         controller.Move(move * Time.deltaTime * playerSpeed);
@@ -140,16 +149,19 @@ public class PlayerController : MonoBehaviour
         controller.Move(playerVelocity * Time.deltaTime);
 
         //Gets the rotatin and moves according to the camera
-        if(  (movement.x == 0)){
-            float targetAngle = Mathf.Atan2(movement.x, movement.y) * Mathf.Rad2Deg + cameraMainTransform.eulerAngles.y;
-            Quaternion rotation = Quaternion.Euler(0f, targetAngle, 0f); //We only want to rotate on the y axis
-            transform.rotation = Quaternion.Lerp(transform.rotation,rotation,Time.deltaTime * rotationSpeed);
+        // if(  (movement.x == 0)){
+        //     float targetAngle = Mathf.Atan2(movement.x, movement.y) * Mathf.Rad2Deg + cameraMainTransform.eulerAngles.y;
+        //     Quaternion rotation = Quaternion.Euler(0f, targetAngle, 0f); //We only want to rotate on the y axis
+        //     transform.rotation = Quaternion.Lerp(transform.rotation,rotation,Time.deltaTime * rotationSpeed);
             
-        }else if (movement.x != 0){
-            float targetAngle = Mathf.Atan2(0, movement.y) * Mathf.Rad2Deg + cameraMainTransform.eulerAngles.y;
-            Quaternion rotation = Quaternion.Euler(0f, targetAngle, 0f); //We only want to rotate on the y axis
+        // }else if (movement.x != 0){
+        //     float targetAngle = Mathf.Atan2(0, movement.y) * Mathf.Rad2Deg + cameraMainTransform.eulerAngles.y;
+        //     Quaternion rotation = Quaternion.Euler(0f, targetAngle, 0f); //We only want to rotate on the y axis
+        //     transform.rotation = Quaternion.Lerp(transform.rotation,rotation,Time.deltaTime * rotationSpeed);
+        // }
+        	Quaternion rotation = Quaternion.Euler(0f, cameraMainTransform.eulerAngles.y, 0f); //We only want to rotate on the y axis
             transform.rotation = Quaternion.Lerp(transform.rotation,rotation,Time.deltaTime * rotationSpeed);
-        }
+
     }
 
     public bool OnSlope(){

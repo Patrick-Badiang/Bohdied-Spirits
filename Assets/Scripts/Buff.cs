@@ -2,9 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Speed Buff", menuName = "ScriptableObject/Spawnables/New Speed Buff")]
-public class Buff : ScriptableObject
+public class Buff : MonoBehaviour
 {
-    public GameObject model;
-    public int speedBonus;
+    [SerializeField] private BuffSO buff;
+
+    public int _speedBonus;
+    
+    [SerializeField]
+    private FloatVariable buffCount;
+
+    void Awake(){
+        _speedBonus = buff.speedBonus;
+    }
+
+    public void HitBuff(PlayerController _player){
+        _player.BuffIsHit(_speedBonus);
+        buffCount.ApplyChange(-1);
+        gameObject.SetActive(false);
+    }
+
 }

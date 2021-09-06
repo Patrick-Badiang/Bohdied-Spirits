@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class SpawnAroundPlayer : MonoBehaviour
 {
-    public GameObject[] buff;
+    public BuffSO[] buff;
 
-    int buffCount;
+    [SerializeField]
+    private FloatVariable buffCount;
 
     int xPos, yPos, zPos;
 
@@ -18,25 +19,31 @@ public class SpawnAroundPlayer : MonoBehaviour
 
     public IEnumerator SpawnBuffs(){
 
-        while(buffCount <= 5){
+        while(buffCount.Value < 10){
+            Vector3 playerPos = player.transform.position;
+            Vector3 playerDirection = player.transform.forward;
+            Quaternion playerRotation = player.transform.rotation;
+
             int randBuff = Random.Range(0, buff.Length);
 
-            int x1 = (int)player.transform.position.x + 20;
-            int x2 = (int)player.transform.position.x - 20;
+            xPos= Random.Range(20,-20);
+            yPos= Random.Range(1,5);
+            zPos = Random.Range(40,50);
 
-            int y1 = (int)player.transform.position.y + 5;
-            int y2 = (int)player.transform.position.y + 10;
+            Vector3 spawnPos = playerPos + playerDirection *zPos + player.transform.up * yPos + player.transform.right * xPos;
 
-            int z1 = (int)player.transform.position.z + 10;
-            int z2 = (int)player.transform.position.z + 15;
-
-            xPos= Random.Range(x1, x2);
-            yPos= Random.Range(y1 , y2);
-            zPos = Random.Range(z1, z2);
-
-            Instantiate(buff[randBuff], new Vector3(xPos, yPos, zPos), transform.rotation);
+            GameObject clone = Instantiate(buff[randBuff].model, spawnPos, playerRotation);
             yield return new WaitForSeconds(2f);
-            buffCount+= 1;
+            
+            if(clone != null){ StartCoroutine(Countdown(clone)); }
+            
+            buffCount.ApplyChange(1);
         }
+    }
+
+    IEnumerator Countdown(GameObject _object){
+        yield return new WaitForSeconds(4);
+        _object.SetActive(false);
+        buffCount.ApplyChange(-1);
     }
 }

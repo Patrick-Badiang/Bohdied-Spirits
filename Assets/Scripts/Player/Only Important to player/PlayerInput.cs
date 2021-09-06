@@ -16,7 +16,10 @@ public class PlayerInput : MonoBehaviour
     private VoidEvent onInventory;   
 
     [SerializeField]
-    private VoidEvent onAbility1;   
+    private VoidEvent onAbility1;
+
+    [SerializeField]
+    private VoidEvent onAim;   
 
 
     
@@ -28,7 +31,7 @@ public class PlayerInput : MonoBehaviour
     void OnAbility2(InputValue value){}
     void OnAbility3(InputValue value){}
     void OnAbility4(InputValue value){}
-    void OnAim(InputValue value){}
+    void OnAim(InputValue value){ onAim.Raise();}
     void OnSave(InputValue value){                onSave.Raise();}
     void OnLoad(InputValue value){            onLoad.Raise();   }
     void OnInventory(InputValue value){   onInventory.Raise();   }
