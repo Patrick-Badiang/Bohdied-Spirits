@@ -41,7 +41,8 @@ public class PlayerCombat : MonoBehaviour
     }
 
     public void Attack(){
-        Collider[] enemiesThatAreHit = Physics.OverlapSphere(meleePos.position, meleeRange, whatIsEnemy);
+
+        Collider[] enemiesThatAreHit = Physics.OverlapBox(meleePos.position, meleePos.localScale/2, Quaternion.identity, whatIsEnemy);
 
         foreach (Collider enemy in enemiesThatAreHit)
         {
@@ -57,6 +58,6 @@ public class PlayerCombat : MonoBehaviour
 
     void OnDrawGizmos(){
         if(meleePos == null)    return;
-        Gizmos.DrawWireSphere(meleePos.position, meleeRange);
+            Gizmos.DrawWireCube(meleePos.position, meleePos.localScale);
     }
 }

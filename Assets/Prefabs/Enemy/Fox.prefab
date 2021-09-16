@@ -342,7 +342,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 1.92
-  m_Speed: 3.5
+  m_Speed: 4.23
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 247.17
@@ -438,7 +438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adf2b1567e801724b9b6ff44ece6f6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 14.29
+  distance: 97.17
   angle: 179.93
   whatIsPlayer:
     serializedVersion: 2
