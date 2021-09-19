@@ -438,7 +438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adf2b1567e801724b9b6ff44ece6f6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 97.17
+  distance: 61.92
   angle: 179.93
   whatIsPlayer:
     serializedVersion: 2
