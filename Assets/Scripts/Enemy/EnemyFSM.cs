@@ -79,7 +79,6 @@ public class EnemyFSM : MonoBehaviour
         agent.isStopped = true;
 
         combat.DoDamage(sight.detectedObject);
-
     }
     void Idle(){}
 

@@ -46,7 +46,7 @@ public class PlayerCombat : MonoBehaviour
 
         foreach (Collider enemy in enemiesThatAreHit)
         {
-            enemy.GetComponent<Combat>().TakeDamage(DoMeleeDamage(playerStats.baseDamage), elementType);
+            enemy.GetComponent<EnemyBase>().TakeDamage(DoMeleeDamage(playerStats.baseDamage), elementType);
         }
     }
 
