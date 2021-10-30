@@ -25,6 +25,9 @@ public class InventoryObject : ScriptableObject
 
     public Inventory Container;
 
+    public Ability _default;
+
+
     public InventorySlot[] GetSlots { get { return Container.Slots; } }
     //Allows us to not have to go inside the "Container" to get the slots
     //Made a "GetSlots" method to allow us to get the slot 
@@ -46,12 +49,14 @@ public class InventoryObject : ScriptableObject
         return true; //Because we were able to find the item
     }
 
+    
+
     public int EmptySlotCount{
         get{
             int counter = 0;
             for (int i = 0; i < GetSlots.Length; i++)
             {
-                if(GetSlots[i].item.Id <= -1){ //Checks if the slot is empty
+                if(GetSlots[i].item.Id <= 0){ //Checks if the slot is empty
                     counter++;
                 }
             }
@@ -74,13 +79,14 @@ public class InventoryObject : ScriptableObject
     public InventorySlot SetEmptySlot(Item _item, int _amount){
         for (int i = 0; i < GetSlots.Length; i++)
         {
-            if(GetSlots[i].item.Id <= -1){
+            if(GetSlots[i].item.Id <= 0){
                 GetSlots[i].UpdateSlot( _item, _amount);
                 return GetSlots[i];
             }
         }
 
         //Set up function for when inventory is full
+        Debug.Log("Full");
         return null;
     }
 
@@ -132,6 +138,14 @@ public class InventoryObject : ScriptableObject
     [ContextMenu("Clear")]
     public void Clear(){
         Container.Clear();
+        if(type == InterfaceType.Ability){
+            for (int i = 0; i < Container.Slots.Length; i++)
+            {
+                AddItem(new Item(_default),1);
+                
+            }
+        }
+        
     }
 }
 
@@ -139,11 +153,13 @@ public class InventoryObject : ScriptableObject
 public class Inventory{
 
     public InventorySlot[] Slots = new InventorySlot[40];
+
+
     public void Clear(){
         for (int i = 0; i < Slots.Length; i++)
         {
             Slots[i].RemoveItem();
-
+            
         }
     }
 }

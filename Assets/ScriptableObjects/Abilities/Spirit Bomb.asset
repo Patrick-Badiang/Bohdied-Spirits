@@ -12,6 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2afdae6dc44253479df3be0588a678a, type: 3}
   m_Name: Spirit Bomb
   m_EditorClassIdentifier: 
+  characterDisplay: {fileID: 0}
+  uiDisplay: {fileID: 21300000, guid: 15ef1a61777af438ba21698b439555f7, type: 3}
+  stackable: 0
+  type: 0
+  description: 
+  data:
+    Name: 
+    Id: 1
+    buffs: []
+  boneNames: []
   _name: FireBall
   _sprite: {fileID: 21300000, guid: daf36e16bfad29c4ea7d8abac36b8185, type: 3}
   _sound: {fileID: 0}

@@ -17,6 +17,7 @@ public class PlayerInput : MonoBehaviour
 
     [SerializeField]
     private VoidEvent onAbility1;
+    [SerializeField] private VoidEvent onEscape;
 
     [SerializeField]
     private VoidEvent onAim;   
@@ -35,4 +36,6 @@ public class PlayerInput : MonoBehaviour
     void OnSave(InputValue value){                onSave.Raise();}
     void OnLoad(InputValue value){            onLoad.Raise();   }
     void OnInventory(InputValue value){   onInventory.Raise();   }
+    // void OnEscape(InputValue value){        OnEscape.Raise();}
+
 }

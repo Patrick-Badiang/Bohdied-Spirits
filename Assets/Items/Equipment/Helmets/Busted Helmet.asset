@@ -10,19 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3514b200280a5694090bb981dc4e9f99, type: 3}
-  m_Name: Bow
+  m_Name: Busted Helmet
   m_EditorClassIdentifier: 
   characterDisplay: {fileID: 0}
-  uiDisplay: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  uiDisplay: {fileID: 0}
   stackable: 0
-  type: 1
-  description: blap
+  type: 0
+  description: 
   data:
     Name: 
-    Id: 0
-    buffs:
-    - attribute: 1
-      value: 0
-      min: 10
-      max: 20
+    Id: -1
+    buffs: []
   boneNames: []

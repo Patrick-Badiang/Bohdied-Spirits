@@ -12,6 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2afdae6dc44253479df3be0588a678a, type: 3}
   m_Name: Empty Ability
   m_EditorClassIdentifier: 
+  characterDisplay: {fileID: 0}
+  uiDisplay: {fileID: 21300000, guid: f6983cf7c7555094399baf9da59dacbf, type: 3}
+  stackable: 0
+  type: 0
+  description: 
+  data:
+    Name: 
+    Id: 0
+    buffs: []
+  boneNames: []
   _name: Null
   _sprite: {fileID: 21300000, guid: 46860b6c6b5ffae47b0d4f1b94fc5df0, type: 3}
   _sound: {fileID: 0}
