@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 48b6c4b6e8d52814283d292c693328f8, type: 3}
-  m_Name: 
+  m_Name: Player_Ability
   m_EditorClassIdentifier: 
   savePath: /Ability.save
   dataBase: {fileID: 11400000, guid: a8ddfe95e6e4947ccb494fa8a36256a2, type: 2}
@@ -19,26 +19,26 @@ MonoBehaviour:
     Slots:
     - AllowedItems: 
       item:
-        Name: 
-        Id: -1
+        Name: Spirit Bomb
+        Id: 1
         buffs: []
-      amount: 0
+      amount: 1
     - AllowedItems: 
       item:
-        Name: 
-        Id: -1
+        Name: Empty Ability
+        Id: 0
         buffs: []
-      amount: 0
+      amount: 1
     - AllowedItems: 
       item:
-        Name: 
-        Id: -1
+        Name: Empty Ability
+        Id: 0
         buffs: []
-      amount: 0
+      amount: 1
     - AllowedItems: 
       item:
-        Name: 
-        Id: -1
+        Name: Empty Ability
+        Id: 0
         buffs: []
-      amount: 0
+      amount: 1
   _default: {fileID: 11400000, guid: b650112e18ede8e4987f9d6813fc372f, type: 2}
