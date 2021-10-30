@@ -20,6 +20,8 @@ public class InventoryObject : ScriptableObject
 {
     
     public string savePath;
+
+    const int SLOTID = 0;
     public ItemDataBaseObject dataBase;
     public InterfaceType type;
 
@@ -36,7 +38,7 @@ public class InventoryObject : ScriptableObject
 
         //Check if there is an avaible slot to put an item in., if so add item to empty slot. 
         //Check if the item matches any other item in the inventory and is stackable/ has no buffs, if so then stack items
-        if(EmptySlotCount <= 0 )
+        if(EmptySlotCount == 0 )
             return false;
         InventorySlot slot = FindItemOnInventory(_item);
         if(!dataBase.ItemObjects[_item.Id].stackable || slot == null){
@@ -56,7 +58,7 @@ public class InventoryObject : ScriptableObject
             int counter = 0;
             for (int i = 0; i < GetSlots.Length; i++)
             {
-                if(GetSlots[i].item.Id <= 0){ //Checks if the slot is empty
+                if(GetSlots[i].item.Id <= SLOTID){ //Checks if the slot is empty
                     counter++;
                 }
             }
@@ -67,6 +69,7 @@ public class InventoryObject : ScriptableObject
     public InventorySlot FindItemOnInventory(Item _item){
         for (int i = 0; i < GetSlots.Length; i++)
         {
+            
             if(GetSlots[i].item.Id == _item.Id){
                 return GetSlots[i];
             }
@@ -79,14 +82,13 @@ public class InventoryObject : ScriptableObject
     public InventorySlot SetEmptySlot(Item _item, int _amount){
         for (int i = 0; i < GetSlots.Length; i++)
         {
-            if(GetSlots[i].item.Id <= 0){
+            if(GetSlots[i].item.Id <= SLOTID){
                 GetSlots[i].UpdateSlot( _item, _amount);
                 return GetSlots[i];
             }
         }
 
         //Set up function for when inventory is full
-        Debug.Log("Full");
         return null;
     }
 
@@ -139,10 +141,12 @@ public class InventoryObject : ScriptableObject
     public void Clear(){
         Container.Clear();
         if(type == InterfaceType.Ability){
+
             for (int i = 0; i < Container.Slots.Length; i++)
-            {
-                AddItem(new Item(_default),1);
-                
+            { 
+                GetSlots[i].UpdateSlot( new Item(_default), 1);
+
+               
             }
         }
         
@@ -222,7 +226,7 @@ public class InventorySlot{
     }
 
     public bool CanPlaceInSlot(ItemObject _itemObject){
-        if(AllowedItems.Length <= 0 || _itemObject == null || _itemObject.data.Id < 0)
+        if(AllowedItems.Length <= 0 || _itemObject == null || _itemObject.data.Id < 1)
         return true;
 
         for (int i = 0; i < AllowedItems.Length; i++)

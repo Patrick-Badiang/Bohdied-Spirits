@@ -5585,6 +5585,7 @@ GameObject:
   - component: {fileID: 1370629219}
   - component: {fileID: 1370629218}
   - component: {fileID: 1370629217}
+  - component: {fileID: 1370629221}
   m_Layer: 5
   m_Name: SlotPrefab (4)
   m_TagString: Untagged
@@ -5708,6 +5709,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1370629215}
   m_CullTransparentMesh: 1
+--- !u!114 &1370629221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370629215}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e395bb5c66df0024fb6014a849d8bf83, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  darkMask: {fileID: 0}
+  coolDownTextDisplay: {fileID: 0}
+  ability: {fileID: 0}
+  weaponHolder: {fileID: 0}
 --- !u!1 &1375279759
 GameObject:
   m_ObjectHideFlags: 0
@@ -5719,6 +5736,7 @@ GameObject:
   - component: {fileID: 1375279760}
   - component: {fileID: 1375279761}
   - component: {fileID: 1375279762}
+  - component: {fileID: 1375279763}
   m_Layer: 5
   m_Name: All Abilities
   m_TagString: Untagged
@@ -5780,6 +5798,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Delegates: []
+--- !u!114 &1375279763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375279759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b91ee50ec96f64f00b17121f4b117185, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 11400000, guid: 7481cc97bc8727646860ce462f514417, type: 2}
+  inventoryStatus: 0
+  slots:
+  - {fileID: 1370629215}
+  - {fileID: 15989237}
+  - {fileID: 983618084}
+  - {fileID: 932562058}
 --- !u!1 &1404956914
 GameObject:
   m_ObjectHideFlags: 0

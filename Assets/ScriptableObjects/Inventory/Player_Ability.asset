@@ -12,29 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48b6c4b6e8d52814283d292c693328f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  savePath: /ability.save
+  savePath: /Ability.save
   dataBase: {fileID: 11400000, guid: a8ddfe95e6e4947ccb494fa8a36256a2, type: 2}
   type: 2
   Container:
     Slots:
     - AllowedItems: 
       item:
-        Name: Spirit Bomb
-        Id: 1
+        Name: 
+        Id: -1
         buffs: []
-      amount: 1
+      amount: 0
     - AllowedItems: 
       item:
-        Name: Spirit Bomb
-        Id: 1
+        Name: 
+        Id: -1
         buffs: []
-      amount: 1
+      amount: 0
     - AllowedItems: 
       item:
-        Name: Spirit Bomb
-        Id: 1
+        Name: 
+        Id: -1
         buffs: []
-      amount: 1
+      amount: 0
     - AllowedItems: 
       item:
         Name: 

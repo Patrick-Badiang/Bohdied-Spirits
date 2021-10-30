@@ -18,8 +18,7 @@ public class StaticInterface : UserInterface
                 _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().sprite = _slot.itemObject.uiDisplay;
                 _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
                 _slot.slotDisplay.GetComponentInChildren<TextMeshProUGUI>().text = _slot.amount == 1 ? "": _slot.amount.ToString("n0");
-
-
+                
             }
             else{
                 _slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
