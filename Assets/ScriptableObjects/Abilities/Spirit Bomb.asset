@@ -16,15 +16,20 @@ MonoBehaviour:
   uiDisplay: {fileID: 21300000, guid: 15ef1a61777af438ba21698b439555f7, type: 3}
   stackable: 0
   type: 0
+  _sound: {fileID: 0}
+  baseCooldown: 3
+  rb: {fileID: 5407456797576537154, guid: a0ee881ff05a5894ab29654e18d330fe, type: 3}
   description: 
   data:
     Name: 
     Id: 1
     buffs: []
+    _sound: {fileID: 0}
+    BaseCooldown: 0
   boneNames: []
   _name: FireBall
   _sprite: {fileID: 21300000, guid: daf36e16bfad29c4ea7d8abac36b8185, type: 3}
-  _sound: {fileID: 0}
   _baseCoolDown: 3
+  abilityCoolDown: {fileID: 0}
   forceValue: 500
   projectile: {fileID: 5407456797576537154, guid: a0ee881ff05a5894ab29654e18d330fe, type: 3}

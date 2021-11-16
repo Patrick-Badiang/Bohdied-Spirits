@@ -21,7 +21,6 @@ public class ProjectileAbility : Ability
         launcher = _obj.GetComponent<ProjectileShootTriggerable>();
         launcher.forceValue = forceValue;
         launcher.rb = projectile;
-        Debug.Log(projectile);
     }
 
     public override void CastAbility()

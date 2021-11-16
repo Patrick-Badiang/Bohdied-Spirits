@@ -485,45 +485,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   darkMask: {fileID: 0}
   coolDownTextDisplay: {fileID: 0}
-  ability: {fileID: 59217904}
+  ability: {fileID: 758321050}
   weaponHolder: {fileID: 1421262766}
 --- !u!4 &20904717 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 887016125243820935, guid: f69cf4afb9b7a428a8a0803df53f8125, type: 3}
   m_PrefabInstance: {fileID: 887016125224546442}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &59217904
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2afdae6dc44253479df3be0588a678a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterDisplay: {fileID: 0}
-  uiDisplay: {fileID: 0}
-  stackable: 0
-  type: 0
-  _sound: {fileID: 0}
-  baseCooldown: 0
-  description: 
-  data:
-    Name: 
-    Id: -1
-    buffs: []
-    _sound: {fileID: 0}
-    BaseCooldown: 0
-  boneNames: []
-  _name: New Ability
-  _sprite: {fileID: 21300000, guid: f6983cf7c7555094399baf9da59dacbf, type: 3}
-  _baseCoolDown: 1
-  abilityCoolDown: {fileID: 0}
-  forceValue: 500
-  projectile: {fileID: 0}
 --- !u!1 &59415511
 GameObject:
   m_ObjectHideFlags: 3
@@ -1138,14 +1106,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f6983cf7c7555094399baf9da59dacbf, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2613,6 +2581,39 @@ Transform:
   m_Father: {fileID: 5784006607763134417}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &699699113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2afdae6dc44253479df3be0588a678a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDisplay: {fileID: 0}
+  uiDisplay: {fileID: 0}
+  stackable: 0
+  type: 0
+  _sound: {fileID: 0}
+  baseCooldown: 0
+  rb: {fileID: 0}
+  description: 
+  data:
+    Name: 
+    Id: -1
+    buffs: []
+    _sound: {fileID: 0}
+    BaseCooldown: 0
+  boneNames: []
+  _name: New Ability
+  _sprite: {fileID: 21300000, guid: f6983cf7c7555094399baf9da59dacbf, type: 3}
+  _baseCoolDown: 0
+  abilityCoolDown: {fileID: 0}
+  forceValue: 500
+  projectile: {fileID: 0}
 --- !u!1 &707605093
 GameObject:
   m_ObjectHideFlags: 0
@@ -2643,38 +2644,6 @@ Transform:
   m_Father: {fileID: 7210006882459489955}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!114 &720734058
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2afdae6dc44253479df3be0588a678a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterDisplay: {fileID: 0}
-  uiDisplay: {fileID: 0}
-  stackable: 0
-  type: 0
-  _sound: {fileID: 0}
-  baseCooldown: 0
-  description: 
-  data:
-    Name: 
-    Id: -1
-    buffs: []
-    _sound: {fileID: 0}
-    BaseCooldown: 0
-  boneNames: []
-  _name: New Ability
-  _sprite: {fileID: 21300000, guid: f6983cf7c7555094399baf9da59dacbf, type: 3}
-  _baseCoolDown: 1
-  abilityCoolDown: {fileID: 0}
-  forceValue: 500
-  projectile: {fileID: 0}
 --- !u!1 &743312634
 GameObject:
   m_ObjectHideFlags: 0
@@ -2809,6 +2778,39 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 743312634}
   m_CullTransparentMesh: 1
+--- !u!114 &758321050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2afdae6dc44253479df3be0588a678a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterDisplay: {fileID: 0}
+  uiDisplay: {fileID: 0}
+  stackable: 0
+  type: 0
+  _sound: {fileID: 0}
+  baseCooldown: 0
+  rb: {fileID: 0}
+  description: 
+  data:
+    Name: 
+    Id: -1
+    buffs: []
+    _sound: {fileID: 0}
+    BaseCooldown: 0
+  boneNames: []
+  _name: New Ability
+  _sprite: {fileID: 21300000, guid: f6983cf7c7555094399baf9da59dacbf, type: 3}
+  _baseCoolDown: 0
+  abilityCoolDown: {fileID: 0}
+  forceValue: 500
+  projectile: {fileID: 0}
 --- !u!1 &758705292
 GameObject:
   m_ObjectHideFlags: 0
@@ -3095,14 +3097,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f6983cf7c7555094399baf9da59dacbf, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3165,7 +3167,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1370629221}
         m_TargetAssemblyTypeName: AbilityCoolDown, Assembly-CSharp
-        m_MethodName: Buttontriggered
+        m_MethodName: CheckCoolDown
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4368,7 +4370,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0.000030517578, y: 0.000061035156}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1120376243
@@ -4378,13 +4380,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1120376241}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.38431373}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.89411765}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -5914,7 +5916,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   darkMask: {fileID: 1120376243}
   coolDownTextDisplay: {fileID: 601709741}
-  ability: {fileID: 720734058}
+  ability: {fileID: 699699113}
   weaponHolder: {fileID: 1421262766}
 --- !u!1 &1375279759
 GameObject:
@@ -5975,7 +5977,7 @@ MonoBehaviour:
   - {fileID: 15989237}
   - {fileID: 983618084}
   - {fileID: 932562058}
-  settingparameters: {fileID: 0}
+  weaponHolder: {fileID: 1421262766}
 --- !u!114 &1375279762
 MonoBehaviour:
   m_ObjectHideFlags: 0

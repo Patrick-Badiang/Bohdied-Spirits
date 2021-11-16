@@ -20,6 +20,8 @@ public class AbilityCoolDown : MonoBehaviour
     private float coolDownTimeLeft;
     private bool canBetriggered;
 
+    private bool initialized = false;
+
     // void Start(){
     //     InitializeAbility(ability, weaponHolder);
     // }
@@ -36,28 +38,29 @@ public class AbilityCoolDown : MonoBehaviour
     }
 
     public void InitializeAbility(Ability _selectedAbility, GameObject _weaponholder){
-        Debug.Log("Initialized");
         ability = _selectedAbility;
         weaponHolder = _weaponholder;
         // myButtonImage = GetComponent<Image>();
         abilitySource = GetComponent<AudioSource>();
         // myButtonImage.sprite = ability._sprite;
-        darkMask.sprite = ability._sprite;
+        // darkMask.sprite = ability._sprite;
         coolDownDiration = ability._baseCoolDown;
         ability.Initialize(weaponHolder);
         AbilityReady();
+        initialized = true;
     }
 
 
-    void CheckingCoolDownTime(){
+    void Update(){
+        if(initialized){
         bool coolDownComplete = (Time.time > nextReadyTime);
-        while(coolDownComplete){
+        if(coolDownComplete){
             AbilityReady();
             canBetriggered = true;
-        }
-        while(!coolDownComplete){
+        }else{
             canBetriggered = false;
             CoolDown();
+            }
         }
     }
 
