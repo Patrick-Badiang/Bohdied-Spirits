@@ -8,26 +8,33 @@ using UnityEngine.AI;
 [RequireComponent(typeof(Collider))]
 public class Combat : EnemyBase
 {
-   
+   [Header("Loot Table")]
+    public RandomLoot lootTable;
+
+    [HideInInspector]
+    public int total;
+    [HideInInspector]
+    public int randomNumber;
+
     public override void Die(){
 
        gameObject.SetActive(false);
 
-        foreach (var item in enemy.lootTable.equipmentThatCanBeDropped)
+        foreach (var item in lootTable.equipmentThatCanBeDropped)
         {
-            enemy.total += item.chanceOfDrop;
+            total += item.chanceOfDrop;
         }
 
-        enemy.randomNumber = Random.Range(0, enemy.total);
+        randomNumber = Random.Range(0, total);
 
-        foreach (var weight in enemy.lootTable.equipmentThatCanBeDropped)
+        foreach (var weight in lootTable.equipmentThatCanBeDropped)
         {
-            if(enemy.randomNumber <= weight.chanceOfDrop){
+            if(randomNumber <= weight.chanceOfDrop){
                 //Award Item
                 Instantiate(weight.equipmentToBeDropped, whereToSpawn.position, whereToSpawn.rotation);
             }
             else{
-                enemy.randomNumber -= weight.chanceOfDrop;
+                randomNumber -= weight.chanceOfDrop;
             }
         }
     }

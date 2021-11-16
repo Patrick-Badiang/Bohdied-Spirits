@@ -8,13 +8,8 @@ public class EnemySO : ScriptableObject
     [Header("Enemy Model")]
     public GameObject enemyModel;
 
-    [Header("Loot Table")]
-    public RandomLoot lootTable;
+    
 
-    [HideInInspector]
-    public int total;
-    [HideInInspector]
-    public int randomNumber;
 
     [Header("Stats")]
     public float health;

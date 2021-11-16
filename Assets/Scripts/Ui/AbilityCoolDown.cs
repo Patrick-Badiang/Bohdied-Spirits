@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class AbilityCoolDown : MonoBehaviour
 {
     
     public Image darkMask;
-    public Text coolDownTextDisplay;
+    public TextMeshProUGUI coolDownTextDisplay;
 
     [SerializeField] private Ability ability;
     [SerializeField] private GameObject weaponHolder;
@@ -19,9 +20,9 @@ public class AbilityCoolDown : MonoBehaviour
     private float coolDownTimeLeft;
     private bool canBetriggered;
 
-    void Start(){
-        InitializeAbility(ability, weaponHolder);
-    }
+    // void Start(){
+    //     InitializeAbility(ability, weaponHolder);
+    // }
 
     
 
@@ -34,11 +35,13 @@ public class AbilityCoolDown : MonoBehaviour
         return;
     }
 
-    public void InitializeAbility(Ability _selectedAbility, GameObject weaponHolder){
+    public void InitializeAbility(Ability _selectedAbility, GameObject _weaponholder){
+        Debug.Log("Initialized");
         ability = _selectedAbility;
-        myButtonImage = GetComponent<Image>();
+        weaponHolder = _weaponholder;
+        // myButtonImage = GetComponent<Image>();
         abilitySource = GetComponent<AudioSource>();
-        myButtonImage.sprite = ability._sprite;
+        // myButtonImage.sprite = ability._sprite;
         darkMask.sprite = ability._sprite;
         coolDownDiration = ability._baseCoolDown;
         ability.Initialize(weaponHolder);
@@ -46,12 +49,13 @@ public class AbilityCoolDown : MonoBehaviour
     }
 
 
-    void Update(){
+    void CheckingCoolDownTime(){
         bool coolDownComplete = (Time.time > nextReadyTime);
-        if(coolDownComplete){
+        while(coolDownComplete){
             AbilityReady();
             canBetriggered = true;
-        }else{
+        }
+        while(!coolDownComplete){
             canBetriggered = false;
             CoolDown();
         }

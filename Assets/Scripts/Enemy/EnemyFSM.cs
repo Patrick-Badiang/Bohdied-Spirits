@@ -18,13 +18,13 @@ public class EnemyFSM : MonoBehaviour
 
     float lastAttackTime;
     public float attackSpeed;
-    Combat combat;
+    EnemyBase combat;
     NavMeshAgent agent;
 
     void Awake(){
         
         agent = GetComponentInParent<NavMeshAgent>();
-        combat = GetComponentInParent<Combat>();
+        combat = GetComponentInParent<EnemyBase>();
     }
 
     void Update(){

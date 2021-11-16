@@ -17,8 +17,8 @@ public class AddAbility : MonoBehaviour
         //Then Adds the given ability to the player ability list 
 
         if(_PlayerAbilityList.AddItem(new Item(_abilityToAdd), 1)){
-            Debug.Log(_abilityToAdd.name);
             _onClicked.Raise();
+            
         }
         //causing the empty slot to then have the new ability
     }

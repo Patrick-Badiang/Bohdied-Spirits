@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   equipmentThatCanBeDropped:
   - equipmentToBeDropped: {fileID: 3236243207825916485, guid: 7b4f51e3367eb1f4ea747bc2613c873c, type: 3}
-    chanceOfDrop: 23
+    chanceOfDrop: 4
   - equipmentToBeDropped: {fileID: 3460038314208442494, guid: 9488e1eb6b5c2574fbe357b72ec94119, type: 3}
-    chanceOfDrop: 22
+    chanceOfDrop: 13
   - equipmentToBeDropped: {fileID: 8352701651106494396, guid: 48529c069355cde44ae188b64afa63d7, type: 3}
-    chanceOfDrop: 21
+    chanceOfDrop: 8
   - equipmentToBeDropped: {fileID: 7655635452682218858, guid: 69621c835d25f3a4ba3dbf97ac7c6c0b, type: 3}
-    chanceOfDrop: 20
+    chanceOfDrop: 21
+  - equipmentToBeDropped: {fileID: 3479544770124621736, guid: 4734568a6999143d5ad2e8caa2fdfb84, type: 3}
+    chanceOfDrop: 96

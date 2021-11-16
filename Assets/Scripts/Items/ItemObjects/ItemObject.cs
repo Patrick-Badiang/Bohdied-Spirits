@@ -7,7 +7,9 @@ public enum ItemType{
     Weapon,
     Chestplate,
     Leggings,
-    Default
+    Default,
+    ProjectileAbility,
+    RaycastAbility,
 }
 
 public enum Attributes{
@@ -24,6 +26,15 @@ public abstract class ItemObject : ScriptableObject
     public Sprite uiDisplay;
     public bool stackable;
     public ItemType type;
+
+    public AudioClip _sound;
+    public float baseCooldown;
+
+    public Rigidbody rb;
+
+    // public abstract void Initialize(GameObject _obj);
+    
+    // public abstract void CastAbility();
 
     [TextArea(15,20)]
     public string description;
@@ -65,6 +76,15 @@ public class Item{
     public int Id = -1;
     public ItemBuff[] buffs;
 
+    public AudioClip _sound;
+    public float BaseCooldown;
+
+
+    // public abstract void Initialize(GameObject _obj);
+    
+    // public abstract void CastAbility();
+
+
     public Item(){
         Name = "";
         Id = -1;
@@ -74,6 +94,7 @@ public class Item{
         Name = item.name;
         Id = item.data.Id;
         buffs = new ItemBuff[item.data.buffs.Length];
+        BaseCooldown = item.baseCooldown;
 
         for (int i = 0; i < buffs.Length; i++)
         {
@@ -82,6 +103,13 @@ public class Item{
             buffs[i].attribute = item.data.buffs[i].attribute;
         }
     }
+
+    // public Item(Ability item){
+    //     Name = item.name;
+    //     Id = item.data.Id;
+        
+    //     Debug.Log("Ability made");
+    // }
 }
 
 [System.Serializable]
