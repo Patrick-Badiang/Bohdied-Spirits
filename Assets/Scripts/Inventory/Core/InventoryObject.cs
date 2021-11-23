@@ -10,6 +10,7 @@ public enum InterfaceType{
     Inventory,
     Equipment,
     Ability,
+    Description,
 }
 
 

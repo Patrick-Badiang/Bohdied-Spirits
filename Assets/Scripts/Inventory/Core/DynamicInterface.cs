@@ -15,6 +15,7 @@ public class DynamicInterface : UserInterface
     public int X_SPACE_BETWEEN_ITEM;
     public int NUMBER_OF_COLUMN;
     public int Y_SPACE_BETWEEN_ITEMS;
+    
 
     public override void OnSlotUpdate(InventorySlot _slot){
 
@@ -55,7 +56,7 @@ public class DynamicInterface : UserInterface
 
     }
 
-    private Vector3 GetPosition(int i){
+    public Vector3 GetPosition(int i){
         return new Vector3(X_START + (X_SPACE_BETWEEN_ITEM * (i % NUMBER_OF_COLUMN)), Y_START + (-Y_SPACE_BETWEEN_ITEMS * (i/NUMBER_OF_COLUMN)), 0f);
     }
 }

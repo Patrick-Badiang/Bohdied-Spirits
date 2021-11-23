@@ -7,11 +7,12 @@ using UnityEngine.EventSystems;
 public class AbilityInterface : StaticInterface
 {
 
-    Ability settingparameters;
+    // Ability settingparameters;
 
     [SerializeField]
 
     GameObject weaponHolder;
+    
     public override void OnSlotUpdate(InventorySlot _slot){
         if(_slot.item.Id >= 0){ //Checking if the slot has an item in it
                 // var tmp = ScriptableObject.CreateInstance<ProjectileAbility>();

@@ -16,6 +16,9 @@ MonoBehaviour:
   uiDisplay: {fileID: 21300000, guid: 37028957e34030b4082dbf13abf0d017, type: 3}
   stackable: 0
   type: 0
+  _sound: {fileID: 0}
+  baseCooldown: 0
+  rb: {fileID: 0}
   description: 
   data:
     Name: 
@@ -25,6 +28,8 @@ MonoBehaviour:
       value: 0
       min: 2
       max: 5
+    _sound: {fileID: 0}
+    BaseCooldown: 0
   boneNames:
   - Hip
   - Spine
