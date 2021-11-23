@@ -22,23 +22,25 @@ public class AbilityCoolDown : MonoBehaviour
 
     private bool initialized = false;
 
-    // void Start(){
-    //     InitializeAbility(ability, weaponHolder);
-    // }
-
-    
 
     public void SetAbilityUi(Ability _ability){
         if(ability == null)
         ability = _ability;
 
-        else 
-        Debug.Log("Has ability already");
+        else         
         return;
     }
 
-    public void InitializeAbility(Ability _selectedAbility, GameObject _weaponholder){
-        ability = _selectedAbility;
+    public void InitializeAbility(InventorySlot _selectedAbility, GameObject _weaponholder){
+        //Setting Params
+        var tmp = ScriptableObject.CreateInstance<ProjectileAbility>();
+                
+                tmp._sprite = _selectedAbility.itemObject.uiDisplay;
+                tmp.projectile = _selectedAbility.itemObject.rb;
+                tmp._sound = _selectedAbility.itemObject._sound;
+                tmp._baseCoolDown = _selectedAbility.itemObject.baseCooldown; 
+        
+        ability = tmp;
         weaponHolder = _weaponholder;
         // myButtonImage = GetComponent<Image>();
         abilitySource = GetComponent<AudioSource>();
@@ -78,19 +80,16 @@ public class AbilityCoolDown : MonoBehaviour
 
     public void CheckCoolDown(){
         if(canBetriggered){
-            Buttontriggered();
-        }
-        else 
-        return;
-    }
-    public void Buttontriggered(){
-        nextReadyTime = coolDownDiration + Time.time;
+            nextReadyTime = coolDownDiration + Time.time;
         coolDownTimeLeft = coolDownDiration;
         darkMask.enabled = true;
         coolDownTextDisplay.enabled = true;
         // abilitySource.clip = ability._sound;
         // abilitySource.Play();
         ability.CastAbility();
+        }
+        else 
+        return;
     }
 
 }

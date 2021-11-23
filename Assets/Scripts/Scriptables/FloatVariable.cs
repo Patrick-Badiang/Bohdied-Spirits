@@ -11,9 +11,9 @@ using UnityEngine;
 #endif
         public float Value;
 
-        public void Awake(){
-            Value = 0;
-        }
+        // public void Awake(){
+        //     Value = 0;
+        // }
 
         public void SetValue(float value)
         {

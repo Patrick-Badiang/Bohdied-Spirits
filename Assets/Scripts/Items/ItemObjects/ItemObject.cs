@@ -77,6 +77,8 @@ public class Item{
     public ItemBuff[] buffs;
 
     public AudioClip _sound;
+
+    [HideInInspector]
     public float BaseCooldown;
 
 

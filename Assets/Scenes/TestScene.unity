@@ -989,6 +989,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3728422034131567004, guid: 329475a36462c49a0a9aa95af4cc02b6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728422034131567004, guid: 329475a36462c49a0a9aa95af4cc02b6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728422034131567004, guid: 329475a36462c49a0a9aa95af4cc02b6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 3728422034131567004, guid: 329475a36462c49a0a9aa95af4cc02b6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 4503392921556768882, guid: 329475a36462c49a0a9aa95af4cc02b6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5104837088187150614, guid: 329475a36462c49a0a9aa95af4cc02b6, type: 3}
+      propertyPath: distance
+      value: 25.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5104837088187150614, guid: 329475a36462c49a0a9aa95af4cc02b6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9186981781759137344, guid: 329475a36462c49a0a9aa95af4cc02b6, type: 3}
       propertyPath: m_Name
       value: PlaceHolderEnemyModel
@@ -2416,6 +2444,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e3630296a5647e5987c15de3a2cb85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ai: {fileID: 0}
+  distance: 0
+  angle: 0
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 0
+  obstaclesLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  detectedObject: {fileID: 0}
   enemy: {fileID: 11400000, guid: 6b0f4015cdf9c45bc868218b507a05d8, type: 2}
   whereToSpawn: {fileID: 2005928629}
   onTriggerChoiceScreen: {fileID: 11400000, guid: 4d1760ebe09704f348354f3607592150, type: 2}
@@ -4013,6 +4051,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 69621c835d25f3a4ba3dbf97ac7c6c0b, type: 3}
+--- !u!1 &1226075042 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3093174742466717243, guid: 329475a36462c49a0a9aa95af4cc02b6, type: 3}
+  m_PrefabInstance: {fileID: 166983991}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1226075043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226075042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09975a439e6646d7954f6c02ac45945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ai: {fileID: 0}
+  distance: 73.11
+  angle: 7.04
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 0
+  obstaclesLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  detectedObject: {fileID: 0}
 --- !u!1 &1232427763
 GameObject:
   m_ObjectHideFlags: 0
@@ -6028,12 +6093,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4558967106146044383, guid: 8740456fc0c9ed74ebc6225fb9f391b6, type: 3}
-      propertyPath: m_AutoBraking
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 4558967106146044381, guid: 8740456fc0c9ed74ebc6225fb9f391b6, type: 3}
+      propertyPath: ai
+      value: 
+      objectReference: {fileID: 2083502152}
     m_RemovedComponents:
-    - {fileID: 1885688360, guid: 8740456fc0c9ed74ebc6225fb9f391b6, type: 3}
+    - {fileID: 4558967107233998491, guid: 8740456fc0c9ed74ebc6225fb9f391b6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8740456fc0c9ed74ebc6225fb9f391b6, type: 3}
 --- !u!1 &1814560983
 GameObject:
@@ -6684,6 +6749,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2083502152 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4558967107233998492, guid: 8740456fc0c9ed74ebc6225fb9f391b6, type: 3}
+  m_PrefabInstance: {fileID: 1781255278}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2139363018 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 73204637212146060, guid: 329475a36462c49a0a9aa95af4cc02b6, type: 3}

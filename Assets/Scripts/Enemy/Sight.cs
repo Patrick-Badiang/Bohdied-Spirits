@@ -15,7 +15,7 @@ public class Sight : MonoBehaviour
 
     void Update()
     {
-        int detectedAmount= Physics.OverlapSphereNonAlloc(transform.position, distance, colliders, whatIsPlayer);
+        int detectedAmount= Physics.OverlapBoxNonAlloc(transform.position, transform.localScale/2, colliders,Quaternion.identity, whatIsPlayer);
 
         detectedObject = null;
         for (int i = 0; i < detectedAmount; i++)
@@ -45,7 +45,7 @@ public class Sight : MonoBehaviour
      void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, distance);
+        Gizmos.DrawWireCube(transform.position, transform.localScale/2);
 
         Vector3 rightDirection = Quaternion.Euler(0, angle, 0) * transform.forward;
         Gizmos.DrawRay(transform.position, rightDirection * distance);

@@ -5,8 +5,9 @@ using UnityEngine;
 public abstract class Ability : ItemObject
 {
 
-    public string _name = "New Ability";
+    [HideInInspector]
     public Sprite _sprite;
+    [HideInInspector]
     public float _baseCoolDown = 1f;
 
     public abstract void Initialize(GameObject _obj);

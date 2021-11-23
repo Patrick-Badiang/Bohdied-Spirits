@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b2afdae6dc44253479df3be0588a678a, type: 3}
-  m_Name: Spirit Bomb
+  m_Name: Health Boost
   m_EditorClassIdentifier: 
   characterDisplay: {fileID: 0}
-  uiDisplay: {fileID: 21300000, guid: 15ef1a61777af438ba21698b439555f7, type: 3}
+  uiDisplay: {fileID: 0}
   stackable: 0
   type: 5
   _sound: {fileID: 0}
-  baseCooldown: 3
-  rb: {fileID: 5407456797576537154, guid: a0ee881ff05a5894ab29654e18d330fe, type: 3}
+  baseCooldown: 0
+  rb: {fileID: 0}
   description: 
   data:
     Name: 
-    Id: 1
+    Id: -1
     buffs: []
     _sound: {fileID: 0}
     BaseCooldown: 0
   boneNames: []
-  _sprite: {fileID: 21300000, guid: daf36e16bfad29c4ea7d8abac36b8185, type: 3}
-  _baseCoolDown: 3
+  _sprite: {fileID: 0}
+  _baseCoolDown: 1
   forceValue: 500
-  projectile: {fileID: 5407456797576537154, guid: a0ee881ff05a5894ab29654e18d330fe, type: 3}
+  projectile: {fileID: 0}

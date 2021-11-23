@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 3728422034131567004}
   - component: {fileID: 5104837088187150614}
   - component: {fileID: 4503392921556768882}
+  - component: {fileID: 1226075043}
   m_Layer: 7
   m_Name: Ai
   m_TagString: Untagged
@@ -131,8 +132,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3093174742466717243}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.26}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.29, z: 0.26}
+  m_LocalScale: {x: 100, y: 10, z: 100}
   m_Children: []
   m_Father: {fileID: 73204637212146060}
   m_RootOrder: 1
@@ -149,7 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adf2b1567e801724b9b6ff44ece6f6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 14.29
+  distance: 25.2
   angle: 179.93
   whatIsPlayer:
     serializedVersion: 2
@@ -175,6 +176,27 @@ MonoBehaviour:
   attackDistance: 0.82
   attackTransform: {fileID: 2437864235620856091}
   attackSpeed: 1
+--- !u!114 &1226075043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3093174742466717243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a09975a439e6646d7954f6c02ac45945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 73.11
+  angle: 7.04
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 0
+  obstaclesLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  detectedObject: {fileID: 0}
 --- !u!1 &4682247362537376317
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,7 +430,7 @@ GameObject:
   - component: {fileID: 989376143457679972}
   - component: {fileID: -1155021359683688348}
   - component: {fileID: 8021475621858675324}
-  - component: {fileID: -1959131812789995311}
+  - component: {fileID: 760289356}
   m_Layer: 7
   m_Name: PlaceHolderEnemyModel
   m_TagString: Enemy
@@ -532,7 +554,7 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &-1959131812789995311
+--- !u!114 &760289356
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -541,11 +563,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 9186981781759137344}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e454d757e0e4fee4faa490f918752f23, type: 3}
+  m_Script: {fileID: 11500000, guid: 85e3630296a5647e5987c15de3a2cb85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 11400000, guid: 6b0f4015cdf9c45bc868218b507a05d8, type: 2}
   whereToSpawn: {fileID: 6986540609384460938}
+  onTriggerChoiceScreen: {fileID: 11400000, guid: 4d1760ebe09704f348354f3607592150, type: 2}
 --- !u!1001 &8391764916526937359
 PrefabInstance:
   m_ObjectHideFlags: 0
