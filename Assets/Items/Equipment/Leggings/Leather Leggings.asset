@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3514b200280a5694090bb981dc4e9f99, type: 3}
-  m_Name: Leather_Leggings
+  m_Name: Leather Leggings
   m_EditorClassIdentifier: 
   characterDisplay: {fileID: 8228481481743427302, guid: 6bbb9781a4b28e74f84e932b7ff65a03, type: 3}
   uiDisplay: {fileID: 21300000, guid: daf36e16bfad29c4ea7d8abac36b8185, type: 3}
@@ -21,7 +21,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   description: 
   data:
-    Name: 
+    Name: Leather Leggings
     Id: 4
     buffs:
     - attribute: 0

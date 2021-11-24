@@ -57,12 +57,4 @@ MonoBehaviour:
         _sound: {fileID: 0}
         BaseCooldown: 0
       amount: 0
-    - AllowedItems: 
-      item:
-        Name: 
-        Id: -1
-        buffs: []
-        _sound: {fileID: 0}
-        BaseCooldown: 0
-      amount: 0
   _default: {fileID: 0}

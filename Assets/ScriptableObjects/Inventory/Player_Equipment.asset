@@ -22,22 +22,39 @@ MonoBehaviour:
         Name: 
         Id: -1
         buffs: []
+        _sound: {fileID: 0}
+        BaseCooldown: 0
       amount: 0
     - AllowedItems: 02000000
       item:
         Name: 
         Id: -1
         buffs: []
+        _sound: {fileID: 0}
+        BaseCooldown: 0
       amount: 0
     - AllowedItems: 03000000
       item:
-        Name: 
-        Id: -1
-        buffs: []
-      amount: 0
+        Name: Leather Leggings
+        Id: 4
+        buffs:
+        - attribute: 0
+          value: 6
+          min: 5
+          max: 10
+        - attribute: 2
+          value: 13
+          min: 10
+          max: 15
+        _sound: {fileID: 0}
+        BaseCooldown: 0
+      amount: 1
     - AllowedItems: 01000000
       item:
         Name: 
         Id: -1
         buffs: []
+        _sound: {fileID: 0}
+        BaseCooldown: 0
       amount: 0
+  _default: {fileID: 0}
