@@ -14,7 +14,8 @@ public abstract class UserInterface : MonoBehaviour
     
 
     bool inventoryStatus;
-    public InventoryObject attributeDescriptions;
+
+    
 
 
     public Dictionary<GameObject, InventorySlot> slotsOnInterface = new Dictionary<GameObject, InventorySlot>();
@@ -62,33 +63,16 @@ public abstract class UserInterface : MonoBehaviour
     }
 
     public void OnEnter(GameObject obj){
-        StopAllCoroutines();
 
         MouseData.slotHoveredOver = obj;
-        if(attributeDescriptions != null){
-        var cut = MouseData.interfaceMouseIsOver.slotsOnInterface[MouseData.slotHoveredOver].item;
-
-        for (int i = 0; i < cut.buffs.Length; i++) //For each buff on the item it executes the code
-                {
-                    Item temp = new Item();
-                    temp.Name = cut.buffs[i].attribute.ToString();
-                    temp.Id = cut.Id;
-                    if(cut.Id > -1){
-
-                        StartCoroutine(Wait(temp, cut.buffs[i].value));}
-                    // AttributeDescription.TextParameters(cut.buffs[i].value, cut.buffs[i].attribute);
-
-                }
         
-        
-        }
     }
 
-    IEnumerator Wait(Item passeditem, int buffamount){
+    public IEnumerator Wait(Item passeditem, int buffamount, InventoryObject inven){
 
         var olditem = passeditem;
         yield return new WaitForSecondsRealtime(0.5f);
-        attributeDescriptions.AddItem(olditem, buffamount);
+        inven.AddItem(olditem, buffamount);
 
 
     }
@@ -96,16 +80,7 @@ public abstract class UserInterface : MonoBehaviour
     
 
     public void OnExit(GameObject obj){
-        //Check if there is a slot
-        if(attributeDescriptions != null){
-        attributeDescriptions.Clear();
-        }
-
-        // for (int i = 0; i < cut.buffs.Length; i++) //For each buff on the item it executes the code
-        //         {
-                    // Debug.Log(cut.buffs[i].value + " " + cut.buffs[i].attribute);
-                    // temp.Name = cut.buffs[i].attribute.ToString();
-
+        
         MouseData.slotHoveredOver = null;
 
     }

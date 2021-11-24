@@ -50,6 +50,8 @@ public abstract class ItemObject : ScriptableObject
 
     }
 
+    
+
     private void OnValidate(){ //Runs everytime in play mode and out of play mode whenever a variable is changed
 
         boneNames.Clear();
@@ -121,10 +123,12 @@ public class ItemBuff : IModifier{
     public int value;
     public int min,max;
 
+
     public ItemBuff(int _min, int _max){
         min = _min;
         max = _max;
         GenerateValue();
+        
     }
 
     public void GenerateValue(){
