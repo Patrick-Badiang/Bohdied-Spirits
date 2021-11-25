@@ -35,7 +35,7 @@ public class InventoryInterface : DynamicInterface
         StopAllCoroutines();
 
         if(attributeDescriptions != null){
-            Debug.Log(MouseData.interfaceMouseIsOver.slotsOnInterface[MouseData.slotHoveredOver].item);
+            // Debug.Log(MouseData.interfaceMouseIsOver.slotsOnInterface[MouseData.slotHoveredOver].item);
         var cut = MouseData.interfaceMouseIsOver.slotsOnInterface[MouseData.slotHoveredOver].item;
         itemName.text = cut.Name;
         for (int i = 0; i < cut.buffs.Length; i++) //For each buff on the item it executes the code

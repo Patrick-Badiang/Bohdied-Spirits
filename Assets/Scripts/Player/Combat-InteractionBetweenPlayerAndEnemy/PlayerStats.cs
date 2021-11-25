@@ -74,8 +74,9 @@ public class PlayerStats : MonoBehaviour
                 {
                     for (int j = 0; j < attributes.Length; j++) //Checks each buffs attribute
                     {
-                        if(attributes[j].type == _slot.item.buffs[i].attribute) //Then comapres the attributes to the attributes on the character
                         
+                        if(attributes[j].type == _slot.item.buffs[i].attribute) //Then comapres the attributes to the attributes on the character
+                        Debug.Log(_slot.item.buffs[i].attribute);
                         attributes[j].value.RemoveModifier(_slot.item.buffs[i]); //Finally removes the attribute to the character
                     }
                 }
@@ -122,6 +123,7 @@ public class PlayerStats : MonoBehaviour
                     for (int j = 0; j < attributes.Length; j++) //Checks each buffs attribute
                     {
                         if(attributes[j].type == _slot.item.buffs[i].attribute) //Then comapres the attributes to the attributes on the character
+                        Debug.Log(_slot.item.buffs[i].attribute);
                         attributes[j].value.AddModifier(_slot.item.buffs[i]); //Finally adds the attribute to the character
                     }
                 }

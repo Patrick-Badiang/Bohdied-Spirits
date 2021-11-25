@@ -35,20 +35,12 @@ MonoBehaviour:
       amount: 0
     - AllowedItems: 03000000
       item:
-        Name: Leather Leggings
-        Id: 4
-        buffs:
-        - attribute: 0
-          value: 6
-          min: 5
-          max: 10
-        - attribute: 2
-          value: 13
-          min: 10
-          max: 15
+        Name: 
+        Id: -1
+        buffs: []
         _sound: {fileID: 0}
         BaseCooldown: 0
-      amount: 1
+      amount: 0
     - AllowedItems: 01000000
       item:
         Name: 
