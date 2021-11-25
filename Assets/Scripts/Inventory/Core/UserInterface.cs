@@ -71,7 +71,7 @@ public abstract class UserInterface : MonoBehaviour
     public IEnumerator Wait(Item passeditem, int buffamount, InventoryObject inven){
 
         var olditem = passeditem;
-        yield return new WaitForSecondsRealtime(0.5f);
+        yield return new WaitForSecondsRealtime(0.1f);
         inven.AddItem(olditem, buffamount);
 
 

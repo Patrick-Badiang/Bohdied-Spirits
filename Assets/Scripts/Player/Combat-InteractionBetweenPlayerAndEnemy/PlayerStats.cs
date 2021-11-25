@@ -47,7 +47,7 @@ public class PlayerStats : MonoBehaviour
         health.SetValue(maxHealth);
 
         _boneCombiner = new BoneCombiner(gameObject);
-        for (int i = 0; i < attributes.Length-1; i++)
+        for (int i = 0; i < attributes.Length; i++)
         {
             attributes[i].SetParent(this);
         }
@@ -76,7 +76,6 @@ public class PlayerStats : MonoBehaviour
                     {
                         
                         if(attributes[j].type == _slot.item.buffs[i].attribute) //Then comapres the attributes to the attributes on the character
-                        Debug.Log(_slot.item.buffs[i].attribute);
                         attributes[j].value.RemoveModifier(_slot.item.buffs[i]); //Finally removes the attribute to the character
                     }
                 }
@@ -123,7 +122,6 @@ public class PlayerStats : MonoBehaviour
                     for (int j = 0; j < attributes.Length; j++) //Checks each buffs attribute
                     {
                         if(attributes[j].type == _slot.item.buffs[i].attribute) //Then comapres the attributes to the attributes on the character
-                        Debug.Log(_slot.item.buffs[i].attribute);
                         attributes[j].value.AddModifier(_slot.item.buffs[i]); //Finally adds the attribute to the character
                     }
                 }

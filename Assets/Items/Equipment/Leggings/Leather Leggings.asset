@@ -28,7 +28,7 @@ MonoBehaviour:
       value: 0
       min: 5
       max: 10
-    - attribute: 2
+    - attribute: 3
       value: 0
       min: 10
       max: 15
