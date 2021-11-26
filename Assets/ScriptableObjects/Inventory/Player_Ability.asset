@@ -19,11 +19,11 @@ MonoBehaviour:
     Slots:
     - AllowedItems: 
       item:
-        Name: Empty Ability
-        Id: 0
+        Name: Spirit Bomb
+        Id: 1
         buffs: []
         _sound: {fileID: 0}
-        BaseCooldown: 0
+        BaseCooldown: 3
       amount: 1
     - AllowedItems: 
       item:
