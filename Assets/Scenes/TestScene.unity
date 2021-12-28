@@ -5973,6 +5973,52 @@ Transform:
   m_Father: {fileID: 1927581437}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1047846163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1047846165}
+  - component: {fileID: 1047846164}
+  m_Layer: 0
+  m_Name: TERRAIN_GIZMO
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1047846164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047846163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688ba8b7b9ecd244ba4db8f65b7ee6a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GroupID: 0
+  CubeColor: {r: 0, g: 0.5, b: 1, a: 0.2}
+  CubeWireColor: {r: 0, g: 0.9, b: 1, a: 0.5}
+--- !u!4 &1047846165
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1047846163}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 500, y: 78, z: 500}
+  m_LocalScale: {x: 1000, y: 156, z: 1000}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1075814129 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4558967106146044380, guid: 8740456fc0c9ed74ebc6225fb9f391b6, type: 3}
@@ -11314,19 +11360,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4475056631688762526, guid: 7928ce6c78a7c4a8c92c6bca189c7f59, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.65677345
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4475056631688762526, guid: 7928ce6c78a7c4a8c92c6bca189c7f59, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.65677345
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4475056631688762526, guid: 7928ce6c78a7c4a8c92c6bca189c7f59, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.26200897
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4475056631688762526, guid: 7928ce6c78a7c4a8c92c6bca189c7f59, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.26200897
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4475056631688762526, guid: 7928ce6c78a7c4a8c92c6bca189c7f59, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
