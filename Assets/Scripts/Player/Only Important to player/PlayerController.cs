@@ -179,6 +179,7 @@ public class PlayerController : MonoBehaviour
     }
 
     public void StartAttack(){
+        Debug.Log("Attacked");
         StartCoroutine(AttackAnim());
     }
     IEnumerator AttackAnim(){

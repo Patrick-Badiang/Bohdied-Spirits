@@ -26,6 +26,7 @@ public abstract class ItemObject : ScriptableObject
     public Sprite uiDisplay;
     public bool stackable;
     public ItemType type;
+    public float attackRate;
 
     public AudioClip _sound;
     public float baseCooldown;
@@ -77,6 +78,7 @@ public class Item{
     public string Name;
     public int Id = -1;
     public ItemBuff[] buffs;
+    public float AttackRate;
 
     public AudioClip _sound;
 
@@ -97,6 +99,7 @@ public class Item{
     public Item(ItemObject item){
         Name = item.name;
         Id = item.data.Id;
+        AttackRate = item.attackRate;
         buffs = new ItemBuff[item.data.buffs.Length];
         BaseCooldown = item.baseCooldown;
 

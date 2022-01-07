@@ -5511,6 +5511,7 @@ GameObject:
   - component: {fileID: 903231265}
   - component: {fileID: 903231267}
   - component: {fileID: 903231268}
+  - component: {fileID: 903231257}
   m_Layer: 0
   m_Name: EventManager
   m_TagString: Untagged
@@ -5518,6 +5519,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &903231257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 903231256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09739e57dff60dc4ab96918dab5d8223, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 199747df5b3046a42ace90efcd5ca9f8, type: 2}
+  unityEventResponse:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6561529092545154412}
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: StartAttack
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &903231258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5624,13 +5653,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerStateManager, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 6561529092545154417}
+        m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
+        m_MethodName: CheckAttackCooldown
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -5654,19 +5683,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 6561529092545154417}
         m_TargetAssemblyTypeName: PlayerCombat, Assembly-CSharp
-        m_MethodName: Attack
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 6561529092545154412}
-        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
-        m_MethodName: StartAttack
+        m_MethodName: CheckAttackCooldown
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13221,38 +13238,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 990876011880138759, guid: 188bf7464833a9e49bb8a821dc0fa3b4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 4.76
-      objectReference: {fileID: 0}
-    - target: {fileID: 990876011880138759, guid: 188bf7464833a9e49bb8a821dc0fa3b4, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3.78
-      objectReference: {fileID: 0}
-    - target: {fileID: 990876013239788005, guid: 188bf7464833a9e49bb8a821dc0fa3b4, type: 3}
-      propertyPath: m_Antialiasing
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 990876013239788007, guid: 188bf7464833a9e49bb8a821dc0fa3b4, type: 3}
-      propertyPath: orthographic size
-      value: 1.63
-      objectReference: {fileID: 0}
-    - target: {fileID: 2971300681499324446, guid: 188bf7464833a9e49bb8a821dc0fa3b4, type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 5114429692975691863, guid: b35ab345d59ec4c3b8f0db91f1694568, type: 3}
-    - target: {fileID: 2971300681499324446, guid: 188bf7464833a9e49bb8a821dc0fa3b4, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 289c147bbc44f4f1ea5bd902af3a8631, type: 2}
     - target: {fileID: 6255349842242927299, guid: 188bf7464833a9e49bb8a821dc0fa3b4, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6255349842242927323, guid: 188bf7464833a9e49bb8a821dc0fa3b4, type: 3}
-      propertyPath: attributes.Array.data[2].type
-      value: 2
-      objectReference: {fileID: 0}
+    - target: {fileID: 6255349842242927321, guid: 188bf7464833a9e49bb8a821dc0fa3b4, type: 3}
+      propertyPath: onAttackAnim
+      value: 
+      objectReference: {fileID: 11400000, guid: 199747df5b3046a42ace90efcd5ca9f8, type: 2}
     - target: {fileID: 6738694726622322809, guid: 188bf7464833a9e49bb8a821dc0fa3b4, type: 3}
       propertyPath: m_RootOrder
       value: 6

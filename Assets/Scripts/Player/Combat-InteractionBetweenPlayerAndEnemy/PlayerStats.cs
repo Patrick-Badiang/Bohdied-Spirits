@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerCombat))]
 public class PlayerStats : MonoBehaviour
 {
     public InventoryObject equipment;
@@ -14,6 +15,7 @@ public class PlayerStats : MonoBehaviour
     public int baseDamage;
 
     private BoneCombiner _boneCombiner;
+    private PlayerCombat playerCombat;
 
     public Attribute[] attributes;
 
@@ -47,6 +49,7 @@ public class PlayerStats : MonoBehaviour
         health.SetValue(maxHealth);
 
         _boneCombiner = new BoneCombiner(gameObject);
+        playerCombat = GetComponent<PlayerCombat>();
         for (int i = 0; i < attributes.Length; i++)
         {
             attributes[i].SetParent(this);
@@ -98,6 +101,7 @@ public class PlayerStats : MonoBehaviour
 
                         case ItemType.Weapon:
                             Destroy(_weapon.gameObject);
+                            // playerCombat.attackRate = playerCombat._default;
                         break;
                     }                    
                 }
@@ -146,7 +150,7 @@ public class PlayerStats : MonoBehaviour
                             var newObject = Instantiate(_slot.itemObject.characterDisplay, weaponHoldTransform, false);
                             // newObject.layer = LayerMask.NameToLayer("Equipment");
                             _weapon = newObject.transform;
-                            
+                            playerCombat.attackRate = _slot.item.AttackRate;
 
                         break;
                     }  

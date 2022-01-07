@@ -5,12 +5,17 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerStats))]
 public class PlayerCombat : MonoBehaviour
 {
-    [SerializeField] private VoidEvent onAttack;
-    private float coolDownDiration;
-    private float nextReadyTime;
-    private float coolDownTimeLeft;
+    [SerializeField] private VoidEvent onAttackAnim;
+    
     private bool canBetriggered;
     PlayerStats playerStats;
+
+    [HideInInspector]
+    public float attackRate;
+    [HideInInspector]
+    public float _default = 3f;
+
+    float nextAttackTime = 0f;
 
     public Transform meleePos;
     public float meleeRange;
@@ -20,12 +25,12 @@ public class PlayerCombat : MonoBehaviour
 
     
     public void Awake(){
+        attackRate = _default;
         playerStats = GetComponent<PlayerStats>();
     }
 
     void Update(){
-        bool coolDownComplete = (Time.time > nextReadyTime);
-        if(coolDownComplete){
+        if(Time.time >= nextAttackTime){
             canBetriggered = true;
         }else{
             canBetriggered = false;
@@ -34,13 +39,15 @@ public class PlayerCombat : MonoBehaviour
 
     public void CheckAttackCooldown(){
         if(canBetriggered){
-            onAttack.Raise();
+            Attack();
+            onAttackAnim.Raise();
+            nextAttackTime = Time.time + 1f / attackRate;
         }else{
             return;
         }
     }
 
-    public void Attack(){
+    private void Attack(){
 
         Collider[] enemiesThatAreHit = Physics.OverlapBox(meleePos.position, meleePos.localScale/2, Quaternion.identity, whatIsEnemy);
 

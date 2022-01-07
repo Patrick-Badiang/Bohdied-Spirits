@@ -116,7 +116,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 990876011880138758}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.79, z: 1.38}
+  m_LocalPosition: {x: 0, y: 4.76, z: 3.78}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6738694726622322809}
@@ -316,7 +316,7 @@ Camera:
   far clip plane: 6.02
   field of view: 63.08829
   orthographic: 1
-  orthographic size: 2.15
+  orthographic size: 1.63
   m_Depth: -2
   m_CullingMask:
     serializedVersion: 2
@@ -355,7 +355,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_Antialiasing: 2
   m_AntialiasingQuality: 2
   m_StopNaN: 0
   m_Dithering: 0
@@ -957,7 +957,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6255349842242927299}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 486.5, y: 1.09, z: 431.7}
   m_LocalScale: {x: 0.55306643, y: 0.55306643, z: 0.55306643}
   m_Children:
@@ -1094,6 +1094,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onAttack: {fileID: 11400000, guid: 2b840c16b0395014d8ae421ef0aa6942, type: 2}
+  canBetriggered: 0
+  attackRate: 0
+  _default: 3
   meleePos: {fileID: 990876012904513638}
   meleeRange: 2.59
   whatIsEnemy:
@@ -1112,12 +1115,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3704f1eb6f5f0f94c9b6fc3ebecd6944, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  onAttack: {fileID: 11400000, guid: 2b840c16b0395014d8ae421ef0aa6942, type: 2}
+  onAttacktriggered: {fileID: 11400000, guid: 2b840c16b0395014d8ae421ef0aa6942, type: 2}
   onSave: {fileID: 11400000, guid: 94c6f9931afb48441acd0073d569cfbe, type: 2}
   onLoad: {fileID: 11400000, guid: f33150e776f2d3240bf079607e4b3126, type: 2}
   onInventory: {fileID: 11400000, guid: bed1aed0d9734d34a9150d2841cb6010, type: 2}
   onAbility1: {fileID: 11400000, guid: c27378c3184af7b43a3794c7667e7131, type: 2}
-  onEscape: {fileID: 0}
   onAim: {fileID: 11400000, guid: 29d6d1afcc67f4a2b93b940adcd85a80, type: 2}
 --- !u!114 &6255349842242927300
 MonoBehaviour:
@@ -1397,7 +1399,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: 3204d849f297a4042bf53b6d12e05e24, type: 3}
+  - {fileID: 2100000, guid: 289c147bbc44f4f1ea5bd902af3a8631, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1422,7 +1424,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 6013881080946779465, guid: 6fbbcea8526009442bda933d79ab8280, type: 3}
+  m_Mesh: {fileID: 5114429692975691863, guid: b35ab345d59ec4c3b8f0db91f1694568, type: 3}
   m_Bones:
   - {fileID: 1537507880722317331}
   - {fileID: 7624413251244810507}

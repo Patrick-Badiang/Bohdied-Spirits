@@ -7,7 +7,7 @@ public class PlayerInput : MonoBehaviour
 {   
     
     [SerializeField]
-    private VoidEvent onAttack;
+    private VoidEvent onAttacktriggered;
     [SerializeField]
     private VoidEvent onSave;
     [SerializeField]
@@ -28,7 +28,7 @@ public class PlayerInput : MonoBehaviour
     void OnMove(InputValue value){        }
     void OnJump(InputValue value){}
     void OnMouse(InputValue value){}
-    void OnAttack(InputValue value){          onAttack.Raise(); }
+    void OnAttack(InputValue value){          onAttacktriggered.Raise(); }
     void OnAbility1(InputValue value){        onAbility1.Raise();}
     void OnAbility2(InputValue value){}
     void OnAbility3(InputValue value){}
