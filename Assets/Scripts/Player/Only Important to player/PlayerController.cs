@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     
     private Transform cameraMainTransform;
     private float jumpCount;
-    private float sprintSpeed = 5;
+    private float sprintSpeed = 8;
 
     bool changed;
     bool jump = true;
