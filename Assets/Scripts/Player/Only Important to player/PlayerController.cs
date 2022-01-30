@@ -12,9 +12,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask whatIsItem;
 
     [Header("Inputs")]
-    
     [SerializeField] private InputActionReference movementControl;
-    
     [SerializeField] private InputActionReference jumpControl;
 
     public float playerSpeed = 5.0f;
@@ -37,18 +35,23 @@ public class PlayerController : MonoBehaviour
     
     [SerializeField] float slopeForce;
     
-    private CharacterController controller;
+    
     private Vector3 playerVelocity;
+
     private bool groundedPlayer;
     
     private Transform cameraMainTransform;
     private float jumpCount;
+    private float sprintSpeed = 5;
 
     bool changed;
     bool jump = true;
     
+    //Components
     Combat combat;
     Animator animator;
+    private CharacterController controller;
+    private PlayerStats playerStats;
 
     private void OnEnable(){
         movementControl.action.Enable();
@@ -65,18 +68,26 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         combat = GetComponent<Combat>();
         animator = GetComponent<Animator>();
+        playerStats = GetComponent<PlayerStats>();
         cameraMainTransform = Camera.main.transform;
     }
 
-    public void BuffIsHit(int _bonus){
-        StartCoroutine(GiveBuff(_bonus));
+    public void Sprint(){
+        StartCoroutine(GiveBuff());
     }
 
-    public IEnumerator GiveBuff(int _speedBonus){
-        playerSpeed += _speedBonus;
+    public IEnumerator GiveBuff(){
+        float ogSpeed = playerSpeed;
+        float boost = sprintSpeed * (1 + playerStats.GetValue(2));
+        while(boost >0){
+        playerSpeed += boost;
 
-        yield return new WaitForSeconds(2);
-        playerSpeed -= _speedBonus;
+        yield return new WaitForSeconds(1);
+        boost--;
+        playerSpeed -= boost;
+        }
+        playerSpeed = ogSpeed;
+        boost = sprintSpeed * (1 + playerStats.GetValue(2));;
     }
     public void PickUpItem(Collider other){
         var groundItem = other.GetComponent<GroundItem>();
@@ -164,6 +175,7 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    
     public bool OnSlope(){
         if(jump)
             return false;
