@@ -171,8 +171,14 @@ public class PlayerController : MonoBehaviour
         //     Quaternion rotation = Quaternion.Euler(0f, targetAngle, 0f); //We only want to rotate on the y axis
         //     transform.rotation = Quaternion.Lerp(transform.rotation,rotation,Time.deltaTime * rotationSpeed);
         // }
-        	Quaternion rotation = Quaternion.Euler(0f, cameraMainTransform.eulerAngles.y, 0f); //We only want to rotate on the y axis
+
+        if(movement != Vector2.zero){
+            float targetAngle = Mathf.Atan2(movement.x, movement.y) * Mathf.Rad2Deg + cameraMainTransform.eulerAngles.y;
+            Quaternion rotation = Quaternion.Euler(0f, targetAngle, 0f); //We only want to rotate on the y axis
             transform.rotation = Quaternion.Lerp(transform.rotation,rotation,Time.deltaTime * rotationSpeed);
+        }
+        	// Quaternion rotation = Quaternion.Euler(0f, cameraMainTransform.eulerAngles.y, 0f); //We only want to rotate on the y axis
+            // transform.rotation = Quaternion.Lerp(transform.rotation,rotation,Time.deltaTime * rotationSpeed);
 
     }
 
