@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
     
     private Transform cameraMainTransform;
     private float jumpCount;
-    private float sprintSpeed = 8;
+    private float sprintSpeed = 5;
 
     bool changed;
     bool jump = true;
@@ -142,9 +142,7 @@ public class PlayerController : MonoBehaviour
 
         //State Conditions
         jump = jumpControl.action.triggered;
-        
-        //State actions
-
+    
         // Jumps
         if (jump)
         {
@@ -161,25 +159,36 @@ public class PlayerController : MonoBehaviour
         controller.Move(playerVelocity * Time.deltaTime);
 
         //Gets the rotatin and moves according to the camera
-        // if(  (movement.x == 0)){
-        //     float targetAngle = Mathf.Atan2(movement.x, movement.y) * Mathf.Rad2Deg + cameraMainTransform.eulerAngles.y;
-        //     Quaternion rotation = Quaternion.Euler(0f, targetAngle, 0f); //We only want to rotate on the y axis
-        //     transform.rotation = Quaternion.Lerp(transform.rotation,rotation,Time.deltaTime * rotationSpeed);
-            
-        // }else if (movement.x != 0){
-        //     float targetAngle = Mathf.Atan2(0, movement.y) * Mathf.Rad2Deg + cameraMainTransform.eulerAngles.y;
-        //     Quaternion rotation = Quaternion.Euler(0f, targetAngle, 0f); //We only want to rotate on the y axis
-        //     transform.rotation = Quaternion.Lerp(transform.rotation,rotation,Time.deltaTime * rotationSpeed);
-        // }
 
+        //FreeLook Camera (Player Rotates left and right)
         if(movement != Vector2.zero){
             float targetAngle = Mathf.Atan2(movement.x, movement.y) * Mathf.Rad2Deg + cameraMainTransform.eulerAngles.y;
             Quaternion rotation = Quaternion.Euler(0f, targetAngle, 0f); //We only want to rotate on the y axis
             transform.rotation = Quaternion.Lerp(transform.rotation,rotation,Time.deltaTime * rotationSpeed);
         }
-        	// Quaternion rotation = Quaternion.Euler(0f, cameraMainTransform.eulerAngles.y, 0f); //We only want to rotate on the y axis
-            // transform.rotation = Quaternion.Lerp(transform.rotation,rotation,Time.deltaTime * rotationSpeed);
+        
+         #region Other Camera Scripts
+        /* 
+        ----Freelook Camera (Player does not rotate left and right)----
+        if(  (movement.x == 0)){
+            float targetAngle = Mathf.Atan2(movement.x, movement.y) * Mathf.Rad2Deg + cameraMainTransform.eulerAngles.y;
+            Quaternion rotation = Quaternion.Euler(0f, targetAngle, 0f); //We only want to rotate on the y axis
+            transform.rotation = Quaternion.Lerp(transform.rotation,rotation,Time.deltaTime * rotationSpeed);
+            
+        }else if (movement.x != 0){
+            float targetAngle = Mathf.Atan2(0, movement.y) * Mathf.Rad2Deg + cameraMainTransform.eulerAngles.y;
+            Quaternion rotation = Quaternion.Euler(0f, targetAngle, 0f); //We only want to rotate on the y axis
+            transform.rotation = Quaternion.Lerp(transform.rotation,rotation,Time.deltaTime * rotationSpeed);
+        }
 
+        ----Virtual Camera----
+        Quaternion rotation = Quaternion.Euler(0f, cameraMainTransform.eulerAngles.y, 0f); //We only want to rotate on the y axis
+        transform.rotation = Quaternion.Lerp(transform.rotation,rotation,Time.deltaTime * rotationSpeed);
+
+        */
+       #endregion
+
+        	
     }
 
     
