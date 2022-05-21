@@ -125,6 +125,7 @@ public class PlayerController : MonoBehaviour
         Vector3 move = new Vector3(movement.x, 0, movement.y);
 
         //Moves the character in terms of the camera rotation
+        
         move = cameraMainTransform.forward.normalized * move.z + cameraMainTransform.right.normalized * move.x;
         move.y = 0f;
         
