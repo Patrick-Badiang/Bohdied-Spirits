@@ -7,4 +7,8 @@ public class Test : MonoBehaviour
     public void EventTriggered(){
         Debug.Log("Triggered");
     }
+
+    void OnTriggerEnter(){
+        Debug.Log("Triggered");
+    }
 }

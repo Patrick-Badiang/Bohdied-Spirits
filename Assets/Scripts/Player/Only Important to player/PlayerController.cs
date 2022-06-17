@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
+using Cinemachine;
 
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(CapsuleCollider))]
@@ -69,6 +70,7 @@ public class PlayerController : MonoBehaviour
         combat = GetComponent<Combat>();
         animator = GetComponent<Animator>();
         playerStats = GetComponent<PlayerStats>();
+        
         cameraMainTransform = Camera.main.transform;
     }
 
@@ -79,13 +81,18 @@ public class PlayerController : MonoBehaviour
     public IEnumerator GiveBuff(){
         float ogSpeed = playerSpeed;
         float boost = sprintSpeed * (1 + playerStats.GetValue(2));
+        
         while(boost >0){
         playerSpeed += boost;
 
+
         yield return new WaitForSeconds(1);
+        
         boost--;
         playerSpeed -= boost;
         }
+        
+
         playerSpeed = ogSpeed;
         boost = sprintSpeed * (1 + playerStats.GetValue(2));;
     }
