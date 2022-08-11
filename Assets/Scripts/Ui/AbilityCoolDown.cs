@@ -32,15 +32,29 @@ public class AbilityCoolDown : MonoBehaviour
     }
 
     public void InitializeAbility(InventorySlot _selectedAbility, GameObject _weaponholder){
-        //Setting Params
-        var tmp = ScriptableObject.CreateInstance<ProjectileAbility>();
-                
-                tmp._sprite = _selectedAbility.itemObject.uiDisplay;
-                tmp.projectile = _selectedAbility.itemObject.rb;
-                tmp._sound = _selectedAbility.itemObject._sound;
-                tmp._baseCoolDown = _selectedAbility.itemObject.baseCooldown; 
+         //Having a tmp var outside of if statement for calling in the method later.
+        var proj = ScriptableObject.CreateInstance<ProjectileAbility>();
+        var ray = ScriptableObject.CreateInstance<RayCastAbility>();
+        //Checking whether the _selectedAbility is a RayCast or a Projectile.
+        if(_selectedAbility.itemObject.rb != null)//Checks if there is a RigidBody or not
+        {
+            //Since there is a rigidBody, it is a ProjectileAbility
+                //Setting Params
+                proj._sprite = _selectedAbility.itemObject.uiDisplay;
+                proj.projectile = _selectedAbility.itemObject.rb;
+                proj._sound = _selectedAbility.itemObject._sound;
+                proj._baseCoolDown = _selectedAbility.itemObject.baseCooldown; 
+                ability = proj; //After Params are set, we call Methods from the object taken from InventorySlot.
+        }else{
+
+                //Setting params
+                ray._sprite = _selectedAbility.itemObject.uiDisplay;
+                ray._sound = _selectedAbility.itemObject._sound;
+                ray._baseCoolDown = _selectedAbility.itemObject.baseCooldown; 
+                ability = ray; //After Params are set, we call Methods from the object taken from InventorySlot.
+
+        }
         
-        ability = tmp;
         weaponHolder = _weaponholder;
         // myButtonImage = GetComponent<Image>();
         abilitySource = GetComponent<AudioSource>();

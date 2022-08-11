@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d3bdc99b9840ec4dbf44b4d9898bd65, type: 3}
+  m_Name: Chained Damage
+  m_EditorClassIdentifier: 
+  characterDisplay: {fileID: 0}
+  uiDisplay: {fileID: 0}
+  stackable: 0
+  type: 6
+  attackRate: 0
+  _sound: {fileID: 0}
+  baseCooldown: 0
+  rb: {fileID: 0}
+  description: 
+  data:
+    Name: 
+    Id: 2
+    buffs: []
+    AttackRate: 0
+    _sound: {fileID: 0}
+    BaseCooldown: 0
+  boneNames: []
+  _sprite: {fileID: 0}
+  _baseCoolDown: 1
+  _damage: 0
+  _range: 0
+  _hitForce: 0
+  _color: {r: 1, g: 1, b: 1, a: 1}

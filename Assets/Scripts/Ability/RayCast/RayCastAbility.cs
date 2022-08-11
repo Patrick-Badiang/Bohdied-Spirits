@@ -10,11 +10,15 @@ public class RayCastAbility : Ability
     public float _hitForce;
     public Color _color = Color.white;
 
+    private RayCastAction cast;
+
     public override void CastAbility()
     {
+        cast.Launch();
     }
     public override void Initialize(GameObject _obj)
     {
+        cast = _obj.GetComponent<RayCastAction>();
     }
 
 }
