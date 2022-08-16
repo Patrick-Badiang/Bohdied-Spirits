@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2afdae6dc44253479df3be0588a678a, type: 3}
+  m_Name: Chained DMG Prjtle
+  m_EditorClassIdentifier: 
+  characterDisplay: {fileID: 0}
+  uiDisplay: {fileID: 0}
+  stackable: 0
+  type: 0
+  attackRate: 0
+  _sound: {fileID: 0}
+  baseCooldown: 0
+  rb: {fileID: 0}
+  description: 
+  data:
+    Name: 
+    Id: -1
+    buffs: []
+    AttackRate: 0
+    _sound: {fileID: 0}
+    BaseCooldown: 0
+  boneNames: []
+  _sprite: {fileID: 0}
+  _baseCoolDown: 1
+  forceValue: 500
+  projectile: {fileID: 0}
