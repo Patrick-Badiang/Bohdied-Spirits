@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ProjectileShootTriggerable : MonoBehaviour
 {
@@ -9,9 +10,10 @@ public class ProjectileShootTriggerable : MonoBehaviour
     [HideInInspector] public float forceValue = 1f;
 
     public void Launch(){
-        Rigidbody clonedObject = Instantiate(rb, bulletSpawn.position, bulletSpawn.rotation) as Rigidbody;
+        Ray dirct = Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue());
+        Rigidbody clonedObject = Instantiate(rb, dirct.origin, bulletSpawn.rotation) as Rigidbody;
 
-        clonedObject.AddForce(bulletSpawn.transform.forward * forceValue);
+        clonedObject.AddForce(dirct.direction * forceValue);
 
         
     }

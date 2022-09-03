@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.VFX;
 
 [RequireComponent(typeof(Health))]
 [RequireComponent(typeof(NavMeshAgent))]
@@ -11,12 +12,16 @@ public class Combat : EnemyBase
    [Header("Loot Table")]
     public RandomLoot lootTable;
 
+    [Header("Death Animation")]
+    public GameObject smokePuff;
+
     [HideInInspector]
     public int total;
     [HideInInspector]
     public int randomNumber;
 
     public override void Die(){
+        GameObject smoke = Instantiate(smokePuff, transform.position, transform.rotation);
 
        gameObject.SetActive(false);
 

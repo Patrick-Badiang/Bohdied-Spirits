@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class EnemyBase : MonoBehaviour
 {
@@ -14,6 +15,8 @@ public class EnemyBase : MonoBehaviour
     Health _healthUi;
     bool vulnerable;
     float lastAttackTime;
+
+
 
     public void Awake(){
         GameObject visuals = Instantiate(enemy.enemyModel);

@@ -382,6 +382,7 @@ MonoBehaviour:
   enemy: {fileID: 11400000, guid: eea5d3e92cb43394cb788e39390d2b73, type: 2}
   whereToSpawn: {fileID: 3082057149298728135}
   lootTable: {fileID: 11400000, guid: 8dd586724efcd0b47b50d9fd2efd0a18, type: 2}
+  smokePuff: {fileID: 1757349513788269087, guid: 9a470df6f0a740c40b97263aaae43327, type: 3}
   total: 0
   randomNumber: 0
 --- !u!114 &447976533

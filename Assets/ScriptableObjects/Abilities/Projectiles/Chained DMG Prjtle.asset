@@ -18,12 +18,12 @@ MonoBehaviour:
   type: 0
   attackRate: 0
   _sound: {fileID: 0}
-  baseCooldown: 0
-  rb: {fileID: 0}
+  baseCooldown: 3
+  rb: {fileID: 6174233119360205496, guid: f969677dd65cf68428b489f3f7eaa98c, type: 3}
   description: 
   data:
     Name: 
-    Id: -1
+    Id: 2
     buffs: []
     AttackRate: 0
     _sound: {fileID: 0}

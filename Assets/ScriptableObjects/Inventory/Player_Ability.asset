@@ -19,8 +19,8 @@ MonoBehaviour:
     Slots:
     - AllowedItems: 
       item:
-        Name: Chained Damage
-        Id: 2
+        Name: Empty Ability
+        Id: 0
         buffs: []
         AttackRate: 0
         _sound: {fileID: 0}
